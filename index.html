@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -1320,27 +1320,41 @@
     { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-10%20102011.png" target="_blank">digital business strategy uae</a>', rank: '73', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-10%20102011.png' },
     { keyword: 'Digital Marketing Emirates', rank: '50', img: 'seo/Screenshot 2026-03-10 102241.png' }];
     var oldPosterData = [];
-    var newPosterData = [];
+    var newPosterData = [
+      { label: 'Creative Design Poster 1', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.23 PM.jpeg' },
+      { label: 'Creative Design Poster 2', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.24 PM.jpeg' },
+      { label: 'Creative Design Poster 3', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.25 PM (1).jpeg' },
+      { label: 'Creative Design Poster 4', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.25 PM (2).jpeg' },
+      { label: 'Creative Design Poster 5', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.25 PM.jpeg' },
+      { label: 'Creative Design Poster 6', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.26 PM (1).jpeg' },
+      { label: 'Creative Design Poster 7', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.26 PM.jpeg' },
+      { label: 'Creative Design Poster 8', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.27 PM (1).jpeg' },
+      { label: 'Creative Design Poster 9', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.27 PM (2).jpeg' },
+      { label: 'Creative Design Poster 10', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.27 PM.jpeg' },
+      { label: 'Creative Design Poster 11', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.28 PM (1).jpeg' },
+      { label: 'Creative Design Poster 12', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.28 PM.jpeg' },
+      { label: 'Creative Design Poster 13', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.29 PM (1).jpeg' },
+      { label: 'Creative Design Poster 14', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.29 PM (2).jpeg' },
+      { label: 'Creative Design Poster 15', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.29 PM.jpeg' },
+      { label: 'Creative Design Poster 16', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.30 PM.jpeg' },
+      { label: 'Creative Design Poster 17', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.31 PM (1).jpeg' },
+      { label: 'Creative Design Poster 18', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.31 PM.jpeg' },
+      { label: 'Creative Design Poster 19', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.32 PM (1).jpeg' },
+      { label: 'Creative Design Poster 20', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.32 PM.jpeg' },
+      { label: 'Creative Design Poster 21', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.33 PM (1).jpeg' },
+      { label: 'Creative Design Poster 22', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.33 PM (2).jpeg' },
+      { label: 'Creative Design Poster 23', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.33 PM.jpeg' }
+    ];
     // var carouselData = [];
     var videoData = [];
     var ugcData = [
+      { label: 'Akshitha Developers UGC Ad', src: 'UGC/UGC-VIDEOS/Akshitha develoepers.mp4', localSrc: 'UGC/UGC-VIDEOS/Akshitha develoepers.mp4', tag: 'Full Ad' },
+      { label: 'Akshitha Developers — Ad 2', src: 'UGC/UGC-VIDEOS/Akshitha developers-1.mp4', localSrc: 'UGC/UGC-VIDEOS/Akshitha developers-1.mp4', tag: 'Full Ad' },
       { label: 'VGM UGC Ad', src: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/UGC/VGM-UGC-ADS.mp4', localSrc: 'UGC/UGC-VIDEOS/VGM-UGC-ADS.mp4', tag: 'Full Ad' },
       { label: 'KitKat UGC Ad', src: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/UGC/KITKAT-UGC-AD.mp4', localSrc: 'UGC/UGC-VIDEOS/KITKAT-UGC-AD.mp4', tag: 'Full Ad' },
       { label: 'Foxtale Moisturiser UGC Ad', src: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/UGC/Foxtale%20Moisturiser-UGC%20AD.mp4', localSrc: 'UGC/UGC-VIDEOS/Foxtale Moisturiser-UGC AD.mp4', tag: 'Full Ad' },
       { label: 'VMG Shoes', src: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/UGC/VMG%20SHOES.mp4', localSrc: 'UGC/UGC-VIDEOS/VMG SHOES.mp4', tag: 'Full Ad' },
-      { label: 'Molecular Sunscreen — Protect Your Glow', src: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/UGC/Molecular%20Sunscreen%20Protect%20Your%20Glow%20Today%20(online-video-cutter.com).mp4', localSrc: 'UGC/UGC-VIDEOS/Molecular Sunscreen Protect Your Glow Today (online-video-cutter.com).mp4', tag: 'Full Ad' },
-      { label: 'Foxtale Moisturiser — Scene 1', src: 'UGC/UGC SECNES/FOXTALE-1-21-05-2026.mp4', tag: 'Scene Clip' },
-      { label: 'Foxtale Moisturiser — Scene 2', src: 'UGC/UGC SECNES/FOXTALE-2-21-05-2026.mp4', tag: 'Scene Clip' },
-      { label: 'Foxtale Moisturiser — Scene 3', src: 'UGC/UGC SECNES/FOXTALE-3-21-05-2026.mp4', tag: 'Scene Clip' },
-      { label: 'Foxtale Moisturiser — Scene 4', src: 'UGC/UGC SECNES/FOXTALE-4-21-05-2026.mp4', tag: 'Scene Clip' },
-      { label: 'VGM UGC Ad — Scene 1', src: 'UGC/UGC SECNES/VGM-UGC-1.mp4', tag: 'Scene Clip' },
-      { label: 'VGM UGC Ad — Scene 2', src: 'UGC/UGC SECNES/VGM-UGC-2.mp4', tag: 'Scene Clip' },
-      { label: 'VGM UGC Ad — Scene 3', src: 'UGC/UGC SECNES/VGM-UGC-3.mp4', tag: 'Scene Clip' },
-      { label: 'VGM UGC Ad — Scene 4', src: 'UGC/UGC SECNES/VGM-UGC-4.mp4', tag: 'Scene Clip' },
-      { label: 'KitKat UGC Ad — Scene 1', src: 'UGC/UGC SECNES/kitkat-1-21-05-2026.mp4', tag: 'Scene Clip' },
-      { label: 'KitKat UGC Ad — Scene 2', src: 'UGC/UGC SECNES/kitkat-2-21-05-2026.mp4', tag: 'Scene Clip' },
-      { label: 'KitKat UGC Ad — Scene 3', src: 'UGC/UGC SECNES/kitkat-3-21-05-2026.mp4', tag: 'Scene Clip' },
-      { label: 'KitKat UGC Ad — Scene 4', src: 'UGC/UGC SECNES/kitkat-4-21-05-2026.mp4', tag: 'Scene Clip' }
+      { label: 'Molecular Sunscreen — Protect Your Glow', src: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/UGC/Molecular%20Sunscreen%20Protect%20Your%20Glow%20Today%20(online-video-cutter.com).mp4', localSrc: 'UGC/UGC-VIDEOS/Molecular Sunscreen Protect Your Glow Today (online-video-cutter.com).mp4', tag: 'Full Ad' }
     ];
 
     var builtSEO = false, builtCreative = false, builtUGC = false, carouselIdx = 0;
