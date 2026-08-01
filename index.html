@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Venkatesh Malyala — Digital Marketing Executive</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0e0e0e;
+      --ink-soft: #4a4a4a;
+      --ink-mute: #8a8a8a;
+      --paper: #f9f7f3;
+      --paper-warm: #f1ede4;
+      --accent: #c8501a;
+      --accent-light: #f5e8e1;
+      --border: #e0dbd0;
+      --white: #fff;
+      --blue: #2563eb;
+      --blue-light: #eff6ff;
+      --purple: #7c3aed;
+      --purple-light: #f5f3ff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: rgba(249, 247, 243, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .nav-logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      text-decoration: none;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 5% 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--paper-warm) 0%, var(--accent-light) 100%);
+      clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+      z-index: 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 5px 14px;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+      width: fit-content;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-name em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .hero-desc {
+      font-size: 15px;
+      color: var(--ink-soft);
+      max-width: 440px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 3px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .btn-primary:hover {
+      background: #a8401a;
+    }
+
+    .btn-outline {
+      border: 1.5px solid var(--ink);
+      color: var(--ink);
+      padding: 12px 28px;
+      border-radius: 3px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .btn-outline:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.25rem;
+    }
+
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .stat-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 6px;
+      background: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink-mute);
+      margin-bottom: 3px;
+    }
+
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    .full-bg {
+      padding: 80px 5%;
+      background: var(--white);
+    }
+
+    .full-bg .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .warm-bg {
+      padding: 80px 5%;
+      background: var(--paper-warm);
+    }
+
+    .warm-bg .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    section.wrap {
+      padding: 80px 5%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .5rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      line-height: 1.2;
+    }
+
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin: 1rem 0 2.5rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-item {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: border-color .2s, transform .15s;
+    }
+
+    .skill-item.clickable {
+      cursor: pointer;
+    }
+
+    .skill-item.clickable:hover {
+      transform: translateY(-2px);
+    }
+
+    .skill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .skill-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .skill-badge {
+      margin-left: auto;
+      font-size: 10px;
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .exp-timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .exp-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .exp-item {
+      position: relative;
+      margin-bottom: 3rem;
+    }
+
+    .exp-dot {
+      position: absolute;
+      left: -2rem;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--accent);
+      margin-left: -6px;
+    }
+
+    .exp-period {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .4rem;
+    }
+
+    .exp-role {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: .25rem;
+    }
+
+    .exp-company {
+      font-size: 13px;
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .exp-company::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 1px;
+      background: var(--ink-mute);
+    }
+
+    .exp-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .exp-list li {
+      font-size: 14px;
+      color: var(--ink-soft);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .exp-list li::before {
+      content: "\2192";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 12px;
+    }
+
+    .edu-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      max-width: 600px;
+    }
+
+    .edu-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      background: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+
+    .edu-degree {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .edu-school {
+      font-size: 14px;
+      color: var(--ink-soft);
+      margin-bottom: 4px;
+    }
+
+    .edu-year {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .contact-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      transition: border-color .2s, transform .15s;
+    }
+
+    .contact-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .contact-icon {
+      font-size: 22px;
+      width: 44px;
+      height: 44px;
+      background: var(--accent-light);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink-mute);
+      margin-bottom: 3px;
+    }
+
+    .contact-val {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    /* OVERLAY */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: var(--paper);
+      overflow-y: auto;
+    }
+
+    .overlay.open {
+      display: block;
+    }
+
+    .ov-header {
+      position: sticky;
+      top: 0;
+      background: rgba(249, 247, 243, 0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      z-index: 10;
+    }
+
+    .ov-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: none;
+      padding: 8px 18px;
+      border-radius: 4px;
+      transition: all .2s;
+    }
+
+    .back-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .ov-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 5%;
+    }
+
+    .ov-tabs {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0;
+      flex-wrap: wrap;
+    }
+
+    .ov-tab {
+      padding: 9px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: var(--ink-mute);
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: all .2s;
+      white-space: nowrap;
+    }
+
+    .ov-tab.active {
+      color: var(--blue);
+      border-bottom-color: var(--blue);
+      font-weight: 600;
+    }
+
+    .ov-tab-content {
+      display: none;
+    }
+
+    .ov-tab-content.active {
+      display: block;
+    }
+
+    .sub-section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 600;
+      margin: 2rem 0 .4rem;
+    }
+
+    .sub-section-title:first-child {
+      margin-top: 0;
+    }
+
+    .sub-section-sub {
+      font-size: 13px;
+      color: var(--ink-mute);
+      margin-bottom: 1.5rem;
+    }
+
+    /* POSTER GRID */
+    .poster-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .poster-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .poster-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, .09);
+    }
+
+    .poster-img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .poster-label {
+      padding: 8px 10px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink);
+      border-top: 1px solid var(--border);
+      line-height: 1.3;
+    }
+
+    /* CAROUSEL */
+    .carousel {
+      position: relative;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform .4s ease;
+    }
+
+    .carousel-slide {
+      flex-shrink: 0;
+      width: 100%;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      max-height: 500px;
+      object-fit: contain;
+      display: block;
+      background: #f0f0f0;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, .45);
+      border: none;
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+      transition: background .2s;
+    }
+
+    .carousel-btn:hover {
+      background: rgba(0, 0, 0, .7);
+    }
+
+    .carousel-prev {
+      left: 12px;
+    }
+
+    .carousel-next {
+      right: 12px;
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      padding: 14px 0;
+    }
+
+    .carousel-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--border);
+      border: none;
+      cursor: pointer;
+      transition: background .2s;
+    }
+
+    .carousel-dot.active {
+      background: var(--blue);
+    }
+
+    /* VIDEO GRID — standard */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .video-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .video-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+    }
+
+    .video-card video {
+      width: 100%;
+      display: block;
+      max-height: 220px;
+      background: #111;
+    }
+
+    .video-info {
+      padding: 10px 13px;
+    }
+
+    .video-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .video-brand {
+      font-size: 11px;
+      color: var(--accent);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-top: 2px;
+    }
+
+    /* UGC VIDEO GRID — portrait style */
+    .ugc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .ugc-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .ugc-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .1);
+    }
+
+    .ugc-card video {
+      width: 100%;
+      display: block;
+      height: 320px;
+      object-fit: cover;
+      background: #111;
+    }
+
+    .ugc-info {
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ugc-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .ugc-tag {
+      font-size: 10px;
+      background: var(--purple-light);
+      color: var(--purple);
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-weight: 600;
+      white-space: nowrap;
+      margin-left: 6px;
+      flex-shrink: 0;
+    }
+
+    /* SEO GRID */
+    .rank-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .rank-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .rank-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .09);
+    }
+
+    .rank-img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+
+    .rank-info {
+      padding: 10px 12px;
+    }
+
+    .rank-keyword {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 5px;
+    }
+
+    .rank-pos {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .top1 {
+      background: #d4edda;
+      color: #155724;
+    }
+
+    .top3 {
+      background: #c3e6cb;
+      color: #155724;
+    }
+
+    .top10 {
+      background: #cce5ff;
+      color: #004085;
+    }
+
+    .top20 {
+      background: #fff3cd;
+      color: #856404;
+    }
+
+    .other {
+      background: var(--accent-light);
+      color: var(--accent);
+    }
+
+    .special {
+      background: #e2e3e5;
+      color: #383d41;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(0, 0, 0, .92);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 88vh;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+
+    .lb-close {
+      position: absolute;
+      top: 14px;
+      right: 20px;
+      font-size: 38px;
+      color: #fff;
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+      opacity: .8;
+    }
+
+    .lb-close:hover {
+      opacity: 1;
+    }
+
+    footer {
+      background: var(--ink);
+      color: rgba(255, 255, 255, .45);
+      text-align: center;
+      padding: 2rem 5%;
+      font-size: 12px;
+    }
+
+    footer span {
+      color: var(--accent);
+    }
+
+    @media(max-width:768px) {
+
+      .hero-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero::before {
+        display: none;
+      }
+
+      .hero-grid {
+        gap: 2rem;
+      }
+
+      .ugc-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      }
+
+      .ugc-card video {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-logo">V<span>.</span>Malyala</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero" id="about">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <span class="hero-tag">Digital Marketing Executive</span>
+        <h1 class="hero-name">Venkatesh<br><em>Malyala</em></h1>
+        <p class="hero-desc">Dynamic digital marketer with expertise in SEO, UGC content creation, social media
+          management, RCS campaigns, and Canva design &mdash; driving brand awareness and measurable growth.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn-primary">Get in Touch</a>
+          <a href="#experience" class="btn-outline">View Experience</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="stat-card">
+          <div class="stat-icon">&#128205;</div>
+          <div>
+            <div class="stat-label">Location</div>
+            <div class="stat-value">Hyderabad, India</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">&#128188;</div>
+          <div>
+            <div class="stat-label">Current Role</div>
+            <div class="stat-value">GeekOnDemand &mdash; DME</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">&#127891;</div>
+          <div>
+            <div class="stat-label">Education</div>
+            <div class="stat-value">MBA in Marketing</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">&#9889;</div>
+          <div>
+            <div class="stat-label">Experience</div>
+            <div class="stat-value">2+ Years Digital Marketing</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-bg" id="skills">
+    <div class="inner">
+      <div class="section-label">What I do</div>
+      <h2 class="section-title">Core Skills</h2>
+      <div class="divider"></div>
+      <div class="skills-grid">
+        <div class="skill-item clickable" onclick="openOverlay('seoOverlay')"
+          style="border:2px solid var(--accent);background:var(--accent-light);">
+          <div class="skill-dot"></div><span class="skill-name">Search Engine Optimization</span>
+          <span class="skill-badge" style="background:var(--accent);">Rankings &#8594;</span>
+        </div>
+        <div class="skill-item clickable" onclick="openOverlay('creativeOverlay')"
+          style="border:2px solid var(--blue);background:var(--blue-light);">
+          <div class="skill-dot" style="background:var(--blue);"></div>
+          <span class="skill-name">Content &amp; Creative Design</span>
+          <span class="skill-badge" style="background:var(--blue);">View &#8594;</span>
+        </div>
+        <div class="skill-item clickable" onclick="openOverlay('ugcOverlay')"
+          style="border:2px solid var(--purple);background:var(--purple-light);">
+          <div class="skill-dot" style="background:var(--purple);"></div>
+          <span class="skill-name">UGC Content Creation</span>
+          <span class="skill-badge" style="background:var(--purple);">Watch &#8594;</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-dot"></div><span class="skill-name">Social Media Marketing</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-dot"></div><span class="skill-name">Keyword Research &amp; Analysis</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-dot"></div><span class="skill-name">RCS Campaign Management</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-dot"></div><span class="skill-name">Blog Writing &amp; Content Creation</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-dot"></div><span class="skill-name">Meta Ads (Facebook &amp; Instagram)</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-dot"></div><span class="skill-name">Analytics &amp; Reporting</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-dot"></div><span class="skill-name">Canva Graphic Design</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-dot"></div><span class="skill-name">Google Analytics / GA4</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-dot"></div><span class="skill-name">Lead Generation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="wrap" id="experience">
+    <div class="section-label">Career</div>
+    <h2 class="section-title">Work Experience</h2>
+    <div class="divider"></div>
+    <div class="exp-timeline">
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-period">November 2025 &mdash; Present</div>
+        <div class="exp-role">Digital Marketing Executive</div>
+        <div class="exp-company">GeekOnDemand &middot; Hyderabad</div>
+        <ul class="exp-list">
+          <li>Managed RCS campaigns to improve customer engagement and communication</li>
+          <li>Planned SEO strategies increasing website visibility and organic traffic</li>
+          <li>Conducted keyword research and optimized content for higher search rankings</li>
+          <li>Created SEO-optimized blogs and social media content aligned with brand goals</li>
+          <li>Produced UGC-style video content and social media reels for service promotion</li>
+          <li>Coordinated with development team on landing pages and technical SEO</li>
+        </ul>
+      </div>
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-period">May 2024 &mdash; October 2025</div>
+        <div class="exp-role">Digital Marketing Executive</div>
+        <div class="exp-company">Corpteam Solutions &middot; Hyderabad</div>
+        <ul class="exp-list">
+          <li>Managed SEO, Social Media &amp; Analytics across hospital and real estate projects</li>
+          <li>Generated high-quality leads via Meta Ads for real estate client</li>
+          <li>Improved SEO by optimizing pages, keywords, and meta descriptions</li>
+          <li>Performed competitor analysis and site audits to enhance performance</li>
+          <li>Wrote SEO-focused blogs boosting client website traffic and engagement</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="warm-bg" id="education">
+    <div class="inner">
+      <div class="section-label">Academic Background</div>
+      <h2 class="section-title">Education</h2>
+      <div class="divider"></div>
+      <div class="edu-card">
+        <div class="edu-icon">&#127891;</div>
+        <div>
+          <div class="edu-degree">MBA in Marketing</div>
+          <div class="edu-school">SRM Degree &amp; PG College, Karimnagar</div>
+          <div class="edu-year">2021 &mdash; 2023</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="wrap" id="contact">
+    <div class="section-label">Let's Connect</div>
+    <h2 class="section-title">Contact Me</h2>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:venkateshmalyala.18@gmail.com">
+        <div class="contact-icon">&#9993;</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-val">venkateshmalyala.18@gmail.com</div>
+        </div>
+      </a>
+      <a class="contact-card" href="tel:9652303270">
+        <div class="contact-icon">&#128222;</div>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-val">+91 96523 03270</div>
+        </div>
+      </a>
+      <a class="contact-card" href="#">
+        <div class="contact-icon">&#128188;</div>
+        <div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-val">linkedin.com/in/venkateshmalyala</div>
+        </div>
+      </a>
+      <a class="contact-card" href="#">
+        <div class="contact-icon">&#128205;</div>
+        <div>
+          <div class="contact-label">Location</div>
+          <div class="contact-val">Hyderabad, India</div>
+        </div>
+      </a>
+    </div>
+  </section>
+  <footer>
+    <p>Built by <span>Venkatesh Malyala</span> &middot; Digital Marketing Executive &middot; 2026</p>
+  </footer>
+
+  <!-- SEO OVERLAY -->
+  <div class="overlay" id="seoOverlay">
+    <div class="ov-header">
+      <span class="ov-title">SEO Rankings Portfolio</span>
+      <button class="back-btn" onclick="closeOverlay('seoOverlay')">&#8592; Back</button>
+    </div>
+    <div class="ov-inner">
+      <div class="sub-section-title">GeekOnDemand &mdash; Hyderabad</div>
+      <div class="sub-section-sub">Keyword rankings achieved for an on-demand IT services platform</div>
+      <div class="rank-grid" id="godGrid"></div>
+      <div class="sub-section-title">MIRAJ IT Consultancy &mdash; UAE</div>
+      <div class="sub-section-sub">Keyword rankings achieved for a Dubai-based digital consultancy</div>
+      <div class="rank-grid" id="mirajGrid"></div>
+    </div>
+  </div>
+
+  <!-- CREATIVE OVERLAY -->
+  <div class="overlay" id="creativeOverlay">
+    <div class="ov-header">
+      <span class="ov-title">Creative Portfolio</span>
+      <button class="back-btn" onclick="closeOverlay('creativeOverlay')">&#8592; Back</button>
+    </div>
+    <div class="ov-inner">
+      <div class="ov-tabs">
+        <button class="ov-tab active" onclick="switchTab('creative','posters')">&#127912; Canva Posters</button>
+        <button class="ov-tab" onclick="switchTab('creative','carousel')">&#128247; Router Carousel</button>
+        <button class="ov-tab" onclick="switchTab('creative','videos')">&#127916; Videos &amp; Reels</button>
+      </div>
+      <div class="ov-tab-content active" id="creative-tab-posters">
+        <div class="sub-section-title">GeekOnDemand &mdash; Service Posters</div>
+        <div class="sub-section-sub">Social media creatives for GeekOnDemand service promotions</div>
+        <div class="poster-grid" id="newPosterGrid"></div>
+        <div class="sub-section-title">Exigo &amp; Other Campaign Posters</div>
+        <div class="sub-section-sub">Designs for Exigo Consulting and other brand campaigns</div>
+        <div class="poster-grid" id="oldPosterGrid"></div>
+      </div>
+      <div class="ov-tab-content" id="creative-tab-carousel">
+        <div class="sub-section-title">Router Replacement &mdash; Carousel Post</div>
+        <div class="sub-section-sub">5 Signs Your Router Needs Replacement &mdash; Instagram/LinkedIn carousel</div>
+        <div class="carousel" id="mainCarousel">
+          <div class="carousel-track" id="carouselTrack"></div>
+          <button class="carousel-btn carousel-prev" onclick="carouselMove(-1)">&#8249;</button>
+          <button class="carousel-btn carousel-next" onclick="carouselMove(1)">&#8250;</button>
+          <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+      </div>
+      <div class="ov-tab-content" id="creative-tab-videos">
+        <div class="sub-section-title">Service Videos &amp; Reels</div>
+        <div class="sub-section-sub">Social media reels and explainer videos for GeekOnDemand</div>
+        <div class="video-grid" id="videoGrid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UGC OVERLAY -->
+  <div class="overlay" id="ugcOverlay">
+    <div class="ov-header">
+      <span class="ov-title">UGC Content Creation</span>
+      <button class="back-btn" onclick="closeOverlay('ugcOverlay')">&#8592; Back</button>
+    </div>
+    <div class="ov-inner">
+      <div class="sub-section-title" style="margin-top:0;">User-Generated Content (UGC) Ads</div>
+      <div class="sub-section-sub">Authentic product ad videos created for brands across FMCG, fashion, skincare &amp;
+        lifestyle</div>
+      <div class="ugc-grid" id="ugcGrid"></div>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLb()">
+    <button class="lb-close" onclick="closeLb()">&#215;</button>
+    <img id="lbImg" src="" alt="">
+  </div>
+
+  <script>
+    var godData = [{ keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/BACKUP%20AND%20RESTOR-1.png" target="_blank">Backup & Restore Services</a>', rank: '1', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/BACKUP%20AND%20RESTOR-1.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/CLOUD%2026.png" target="_blank">Cloud Services</a>', rank: '26', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/CLOUD%2026.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/DATA%20LOSS-2.png" target="_blank">Data Loss Prevention</a>', rank: '2', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/DATA%20LOSS-2.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/DLP-13.png" target="_blank">DLP Solutions</a>', rank: '13', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/DLP-13.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/ROUTER%20MAINTANESS-40.png" target="_blank">Router Maintenance</a>', rank: '40', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/ROUTER%20MAINTANESS-40.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/ROUTER-39.png" target="_blank">Router Repair Services</a>', rank: '39', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/ROUTER-39.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/SERVER-16.png" target="_blank">Server Services</a>', rank: '16', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/SERVER-16.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/cctv%20sequrity%20services%204.png" target="_blank">CCTV Security Services</a>', rank: '4', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/cctv%20sequrity%20services%204.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/cctv%20services%20ai.png" target="_blank">CCTV Services</a>', rank: 'AI Featured', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/cctv%20services%20ai.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/cctv%20services-4.png" target="_blank">CCTV Services</a>', rank: '4', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/cctv%20services-4.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/cloud%20back%20up-4.png" target="_blank">Cloud Backup</a>', rank: '4', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/cloud%20back%20up-4.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/data%20recovery%20services-18.png" target="_blank">Data Recovery Services</a>', rank: '18', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/data%20recovery%20services-18.png' },
+    { keyword: 'Data Recovery', rank: '18', img: 'Rankings/data recovery-18.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/it%20services%20and%20support%20gmb.png" target="_blank">IT Services & Support</a>', rank: 'GMB Top', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/it%20services%20and%20support%20gmb.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/laptop-1.png" target="_blank">Laptop Repair Services</a>', rank: '1', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/laptop-1.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/laptop-13.png" target="_blank">Laptop Repair Services</a>', rank: '13', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/laptop-13.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/laptop-19.png" target="_blank">Laptop Repair</a>', rank: '19', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/laptop-19.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/laptop-22.png" target="_blank">Laptop Services</a>', rank: '22', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/laptop-22.png' },
+    { keyword: 'Laptop Repair Hyderabad', rank: '35', img: 'Rankings/laptop-35.png' },
+    { keyword: 'On-Demand Tech Support', rank: '1', img: 'Rankings/ondemand tech support 1.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/printer%20services-25.png" target="_blank">Printer Services</a>', rank: '25', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/printer%20services-25.png' }];
+    var mirajData = [{ keyword: 'email marketing cost in dubai', rank: '1', img: 'seo/Screenshot 2026-03-16 120838.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-10%20101534.png" target="_blank">digital transformation for smes uae</a> (<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-10%20101750.png" target="_blank">AI</a>)', rank: '1', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-10%20101534.png' },
+    { keyword: 'Ad Spend Consultation Dubai', rank: '8', img: 'seo/Screenshot 2026-03-10 101317.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-02-19%20125131.png" target="_blank">#digitalmarketingdubai</a>', rank: '7', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-02-19%20125131.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-02-27%20104823.png" target="_blank">Dubai digital marketing</a>', rank: '15', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-02-27%20104823.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-02-27%20104502.png" target="_blank">digital transformation for smes uae (2nd check)</a>', rank: '11', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-02-27%20104502.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-10%20101317.png" target="_blank">marketing roadmap uae</a>', rank: '20', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-10%20101317.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-10%20102241.png" target="_blank">digital transformation challenges smes uae</a>', rank: '33', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-10%20102241.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-16%20120838.png" target="_blank">digital marketing budget smes uae accounting</a> (<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-16%20122501.png" target="_blank">Alt</a>)', rank: '2', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-16%20120838.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-02-27%20104002.png" target="_blank">social media marketing cost in dubai</a>', rank: '56', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-02-27%20104002.png' },
+    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-10%20102011.png" target="_blank">digital business strategy uae</a>', rank: '73', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-10%20102011.png' },
+    { keyword: 'Digital Marketing Emirates', rank: '50', img: 'seo/Screenshot 2026-03-10 102241.png' }];
+    var oldPosterData = [{ label: 'Partner Spotlight', img: 'assets/posters/old_0.png' }, { label: 'Talent Marketplace', img: 'assets/posters/old_1.png' }, { label: 'Talent Sourcing', img: 'assets/posters/old_2.png' }, { label: 'Top On-Site Opportunities', img: 'assets/posters/old_3.png' }, { label: 'Top Remote Opportunities', img: 'assets/posters/old_4.png' }, { label: 'Social Media Post', img: 'assets/posters/old_5.jpg' }, { label: 'IT Services & Staffing', img: 'assets/posters/old_6.png' }, { label: 'Launching Soon', img: 'assets/posters/old_7.png' }, { label: 'Launching Soon 2', img: 'assets/posters/old_8.png' }, { label: 'Launching Soon 3', img: 'assets/posters/old_9.png' }, { label: 'Launching Soon 4', img: 'assets/posters/old_10.png' }, { label: 'Launching Soon 5', img: 'assets/posters/old_11.png' }, { label: 'Registration Thumbnail', img: 'assets/posters/old_12.png' }, { label: 'Time & Margin', img: 'assets/posters/old_13.png' }];
+    var newPosterData = [{ label: "Antivirus Post", img: "assets/posters/new_0.png" }, { label: "Cloud Services Post", img: "assets/posters/new_1.png" }, { label: "Choose Our Services (0501-2026)", img: "assets/posters/new_2.png" }, { label: "Cloud Services Post", img: "assets/posters/new_3.png" }, { label: "Cyber Security Services Post", img: "assets/posters/new_4.png" }, { label: "Dlp Post", img: "assets/posters/new_5.png" }, { label: "Email Post", img: "assets/posters/new_6.png" }, { label: "Grow Your Business", img: "assets/posters/new_7.png" }, { label: "It Help Desk Post", img: "assets/posters/new_8.png" }, { label: "It Help Desk", img: "assets/posters/new_9.png" }, { label: "Internet Security Post", img: "assets/posters/new_10.png" }, { label: "It Services", img: "assets/posters/new_11.png" }, { label: "Laptop Repair Services Post", img: "assets/posters/new_12.png" }, { label: "Laptop Service Poster", img: "assets/posters/new_13.png" }, { label: "Malware Detection Tools Post", img: "assets/posters/new_14.png" }, { label: "Printer Service Poster", img: "assets/posters/new_15.png" }, { label: "Router Service Poster", img: "assets/posters/new_16.png" }, { label: "Software Services Post", img: "assets/posters/new_17.png" }, { label: "Scanning Service Poster", img: "assets/posters/new_18.png" }, { label: "Server Services", img: "assets/posters/new_19.png" }, { label: "Swami Vivekananda Jayanti", img: "assets/posters/new_20.png" }, { label: "Vaikuntha Ekadashi Poster", img: "assets/posters/new_21.png" }, { label: "Vaikuntha Ekadashi Poster In )", img: "assets/posters/new_22.png" }, { label: "World Aids Day", img: "assets/posters/new_23.png" }, { label: "Antivirus Post", img: "assets/posters/new_24.png" }, { label: "Cc Tv", img: "assets/posters/new_25.png" }, { label: "Cloud Services Post", img: "assets/posters/new_26.png" }, { label: "Cyber Sequrity Post 2", img: "assets/posters/new_27.png" }, { label: "Cyber Sequrity Post 2", img: "assets/posters/new_28.png" }, { label: "Laptop Post", img: "assets/posters/new_29.png" }, { label: "Productivity Day", img: "assets/posters/new_30.png" }];
+    var carouselData = ["assets/carousel/slide_0.png", "assets/carousel/slide_1.png", "assets/carousel/slide_2.png", "assets/carousel/slide_3.png", "assets/carousel/slide_4.png", "assets/carousel/slide_5.png", "assets/carousel/slide_6.png"];
+    var videoData = [{ label: 'Backup Data Services', src: 'assets/videos/video_0.mp4' }, { label: 'CCTV Repair Services', src: 'assets/videos/video_1.mp4' }, { label: 'Cloud Services', src: 'assets/videos/video_2.mp4' }, { label: 'Firewall Services', src: 'assets/videos/video_3.mp4' }, { label: 'Laptop Cleaning', src: 'assets/videos/video_4.mp4' }, { label: 'Laptop Repair Reel', src: 'assets/videos/video_5.mp4' }, { label: 'Scanner Services', src: 'assets/videos/video_6.mp4' }, { label: 'Software Installation', src: 'assets/videos/video_7.mp4' }, { label: 'Software Problem Fix', src: 'assets/videos/video_8.mp4' }, { label: '5 Signs Your Router Needs Replacement', src: 'assets/videos/video_9.mp4' }];
+    var ugcData = [
+      { label: 'VGM UGC Ad', src: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/UGC/VGM-UGC-ADS.mp4', localSrc: 'UGC/UGC-VIDEOS/VGM-UGC-ADS.mp4', tag: 'Full Ad' },
+      { label: 'KitKat UGC Ad', src: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/UGC/KITKAT-UGC-AD.mp4', localSrc: 'UGC/UGC-VIDEOS/KITKAT-UGC-AD.mp4', tag: 'Full Ad' },
+      { label: 'Foxtale Moisturiser UGC Ad', src: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/UGC/Foxtale%20Moisturiser-UGC%20AD.mp4', localSrc: 'UGC/UGC-VIDEOS/Foxtale Moisturiser-UGC AD.mp4', tag: 'Full Ad' },
+      { label: 'VMG Shoes', src: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/UGC/VMG%20SHOES.mp4', localSrc: 'UGC/UGC-VIDEOS/VMG SHOES.mp4', tag: 'Full Ad' },
+      { label: 'Molecular Sunscreen — Protect Your Glow', src: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/UGC/Molecular%20Sunscreen%20Protect%20Your%20Glow%20Today%20(online-video-cutter.com).mp4', localSrc: 'UGC/UGC-VIDEOS/Molecular Sunscreen Protect Your Glow Today (online-video-cutter.com).mp4', tag: 'Full Ad' },
+      { label: 'Foxtale Moisturiser — Scene 1', src: 'UGC/UGC SECNES/FOXTALE-1-21-05-2026.mp4', tag: 'Scene Clip' },
+      { label: 'Foxtale Moisturiser — Scene 2', src: 'UGC/UGC SECNES/FOXTALE-2-21-05-2026.mp4', tag: 'Scene Clip' },
+      { label: 'Foxtale Moisturiser — Scene 3', src: 'UGC/UGC SECNES/FOXTALE-3-21-05-2026.mp4', tag: 'Scene Clip' },
+      { label: 'Foxtale Moisturiser — Scene 4', src: 'UGC/UGC SECNES/FOXTALE-4-21-05-2026.mp4', tag: 'Scene Clip' },
+      { label: 'VGM UGC Ad — Scene 1', src: 'UGC/UGC SECNES/VGM-UGC-1.mp4', tag: 'Scene Clip' },
+      { label: 'VGM UGC Ad — Scene 2', src: 'UGC/UGC SECNES/VGM-UGC-2.mp4', tag: 'Scene Clip' },
+      { label: 'VGM UGC Ad — Scene 3', src: 'UGC/UGC SECNES/VGM-UGC-3.mp4', tag: 'Scene Clip' },
+      { label: 'VGM UGC Ad — Scene 4', src: 'UGC/UGC SECNES/VGM-UGC-4.mp4', tag: 'Scene Clip' },
+      { label: 'KitKat UGC Ad — Scene 1', src: 'UGC/UGC SECNES/kitkat-1-21-05-2026.mp4', tag: 'Scene Clip' },
+      { label: 'KitKat UGC Ad — Scene 2', src: 'UGC/UGC SECNES/kitkat-2-21-05-2026.mp4', tag: 'Scene Clip' },
+      { label: 'KitKat UGC Ad — Scene 3', src: 'UGC/UGC SECNES/kitkat-3-21-05-2026.mp4', tag: 'Scene Clip' },
+      { label: 'KitKat UGC Ad — Scene 4', src: 'UGC/UGC SECNES/kitkat-4-21-05-2026.mp4', tag: 'Scene Clip' }
+    ];
+
+    var builtSEO = false, builtCreative = false, builtUGC = false, carouselIdx = 0;
+    var activeTabs = { creative: 'posters' };
+
+    function rankClass(r) { if (r === "1") return "top1"; if (["2", "3"].includes(r)) return "top3"; if (["4", "5", "6", "7", "8", "9", "10"].includes(r)) return "top10"; if (["11", "12", "13", "14", "15", "16", "17", "18", "19", "20"].includes(r)) return "top20"; if (typeof r === "string" && (r.includes("GMB") || r.includes("AI") || r.includes("Featured"))) return "special"; return "other"; }
+    function rankLabel(r) { if (typeof r === "string" && r.includes("GMB")) return "&#128205; GMB Top"; if (typeof r === "string" && (r.includes("AI") || r.includes("Featured"))) return "&#129302; AI Featured"; return "Rank #" + r; }
+
+    function stripTags(html) {
+      if (!html) return '';
+      return html.replace(/<[^>]*>/g, '').replace(/"/g, '&quot;');
+    }
+
+    function buildSEO() {
+      document.getElementById("godGrid").innerHTML = godData.map(function (d) { return '<div class="rank-card" onclick="openLb(this, event)"><img class="rank-img" src="' + d.img + '" alt="' + stripTags(d.keyword) + '" loading="lazy"><div class="rank-info"><div class="rank-keyword">' + d.keyword + '</div><span class="rank-pos ' + rankClass(d.rank) + '">' + rankLabel(d.rank) + '</span></div></div>'; }).join("");
+      document.getElementById("mirajGrid").innerHTML = mirajData.map(function (d) { return '<div class="rank-card" onclick="openLb(this, event)"><img class="rank-img" src="' + d.img + '" alt="' + stripTags(d.keyword) + '" loading="lazy"><div class="rank-info"><div class="rank-keyword">' + d.keyword + '</div><span class="rank-pos ' + rankClass(d.rank) + '">' + rankLabel(d.rank) + '</span></div></div>'; }).join("");
+    }
+    function buildCreative() {
+      document.getElementById("newPosterGrid").innerHTML = newPosterData.map(function (p) { return '<div class="poster-card" onclick="openLb(this, event)"><img class="poster-img" src="' + p.img + '" alt="' + stripTags(p.label) + '" loading="lazy"><div class="poster-label">' + p.label + '</div></div>'; }).join("");
+      document.getElementById("oldPosterGrid").innerHTML = oldPosterData.map(function (p) { return '<div class="poster-card" onclick="openLb(this, event)"><img class="poster-img" src="' + p.img + '" alt="' + stripTags(p.label) + '" loading="lazy"><div class="poster-label">' + p.label + '</div></div>'; }).join("");
+      var track = document.getElementById("carouselTrack");
+      var dots = document.getElementById("carouselDots");
+      track.innerHTML = carouselData.map(function (src, i) { return '<div class="carousel-slide"><img src="' + src + '" alt="Slide ' + (i + 1) + '" loading="lazy"></div>'; }).join("");
+      dots.innerHTML = carouselData.map(function (_, i) { return '<button class="carousel-dot' + (i === 0 ? ' active' : '') + '" onclick="carouselGo(' + i + ')"></button>'; }).join("");
+      document.getElementById("videoGrid").innerHTML = videoData.map(function (v) { return '<div class="video-card"><video controls preload="metadata" style="width:100%;display:block;max-height:220px;background:#111"><source src="' + v.src + '" type="video/mp4"></video><div class="video-info"><div class="video-label">' + v.label + '</div><div class="video-brand">GeekOnDemand</div></div></div>'; }).join("");
+    }
+    function buildUGC() {
+      document.getElementById("ugcGrid").innerHTML = ugcData.map(function (v) {
+        var sources = '';
+        if (v.src) sources += '<source src="' + v.src + '" type="video/mp4">';
+        if (v.localSrc) sources += '<source src="' + v.localSrc + '" type="video/mp4">';
+        var tagStyle = v.tag === 'Full Ad' ? 'style="background:var(--accent-light);color:var(--accent);"' : '';
+        return '<div class="ugc-card"><video controls preload="metadata" style="width:100%;display:block;height:320px;object-fit:cover;background:#111">' + sources + '</video><div class="ugc-info"><div class="ugc-label">' + v.label + '</div><span class="ugc-tag" ' + tagStyle + '>' + (v.tag || 'UGC') + '</span></div></div>';
+      }).join("");
+    }
+
+    function carouselMove(dir) { carouselGo((carouselIdx + dir + carouselData.length) % carouselData.length); }
+    function carouselGo(n) { carouselIdx = n; document.getElementById("carouselTrack").style.transform = "translateX(-" + n + "00%)"; document.querySelectorAll(".carousel-dot").forEach(function (d, i) { d.classList.toggle("active", i === n); }); }
+
+    function openOverlay(id) {
+      document.getElementById(id).classList.add("open");
+      document.body.style.overflow = "hidden";
+      document.getElementById(id).scrollTop = 0;
+      if (id === "seoOverlay" && !builtSEO) { buildSEO(); builtSEO = true; }
+      if (id === "creativeOverlay" && !builtCreative) { buildCreative(); builtCreative = true; }
+      if (id === "ugcOverlay" && !builtUGC) { buildUGC(); builtUGC = true; }
+    }
+    function closeOverlay(id) { document.getElementById(id).classList.remove("open"); document.body.style.overflow = ""; }
+
+    function switchTab(overlay, name) {
+      var prefix = overlay + "-tab-";
+      document.querySelectorAll("#" + overlay + "Overlay .ov-tab").forEach(function (t, i) { t.classList.toggle("active", ["posters", "carousel", "videos"][i] === name); });
+      document.querySelectorAll("#" + overlay + "Overlay .ov-tab-content").forEach(function (c) { c.classList.remove("active"); });
+      document.getElementById(prefix + name).classList.add("active");
+    }
+
+    function openLb(card, event) {
+      if (event && event.target && event.target.tagName === 'A') return;
+      var img = card.querySelector("img");
+      if (img && img.src) {
+        document.getElementById("lbImg").src = img.src;
+        document.getElementById("lightbox").classList.add("open");
+      }
+    }
+    function closeLb() { document.getElementById("lightbox").classList.remove("open"); }
+  </script>
+</body>
+
+</html>
