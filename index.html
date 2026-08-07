@@ -103,10 +103,10 @@
       position: absolute;
       top: 0;
       right: 0;
-      width: 50%;
+      width: 58%;
       height: 100%;
       background: linear-gradient(135deg, var(--paper-warm) 0%, var(--accent-light) 100%);
-      clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+      clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
       z-index: 0;
     }
 
@@ -198,10 +198,10 @@
     }
 
     .hero-right {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.25rem;
+      align-content: center;
     }
 
     .stat-card {
@@ -212,6 +212,13 @@
       display: flex;
       align-items: center;
       gap: 1rem;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, .05);
+      border-color: var(--accent);
     }
 
     .stat-icon {
@@ -988,6 +995,10 @@
 
       .hero-grid,
       .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-right {
         grid-template-columns: 1fr;
       }
 
