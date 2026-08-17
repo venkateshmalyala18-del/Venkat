@@ -1381,7 +1381,7 @@
           </div>
           <div class="rank-grid" id="godGrid"></div>
         </div>
-        
+
         <!-- Miraj Section -->
         <div id="mirajRankingsSection" style="display: none;">
           <div class="company-detail-header">
@@ -1412,18 +1412,24 @@
     <div class="ov-inner">
       <!-- Company Selection Screen -->
       <div id="creativeCompanySelect">
-        <h2 class="sub-section-title" style="text-align: center; margin-top: 1rem; margin-bottom: 2.5rem;">Select a Company</h2>
+        <h2 class="sub-section-title" style="text-align: center; margin-top: 1rem; margin-bottom: 2.5rem;">Select a Category / Brand</h2>
         <div class="company-grid">
-          <div class="company-card" onclick="selectCreativeCompany('god')">
-            <div class="company-logo">🏢</div>
-            <h3 class="company-name">GeekOnDemand</h3>
-            <p class="company-desc">Hyderabad, India &bull; Service Posters, Carousels, & Video Explaners</p>
+          <div class="company-card" onclick="selectCreativeCompany('trinetra')">
+            <div class="company-logo">🎨</div>
+            <h3 class="company-name">Trinetra Designs</h3>
+            <p class="company-desc">Brand & Social Media Design Posters &amp; Open Positions Banners</p>
             <span class="company-btn">View Creatives &rarr;</span>
           </div>
           <div class="company-card" onclick="selectCreativeCompany('exigo')">
             <div class="company-logo">👔</div>
             <h3 class="company-name">Exigo Consulting</h3>
-            <p class="company-desc">Campaign posters & promotional creatives for business consulting</p>
+            <p class="company-desc">Campaign posters &amp; promotional creatives for business consulting</p>
+            <span class="company-btn">View Creatives &rarr;</span>
+          </div>
+          <div class="company-card" onclick="selectCreativeCompany('god')">
+            <div class="company-logo">🏢</div>
+            <h3 class="company-name">GeekOnDemand</h3>
+            <p class="company-desc">Hyderabad, India &bull; Service Carousels &amp; Video Explaners</p>
             <span class="company-btn">View Creatives &rarr;</span>
           </div>
         </div>
@@ -1431,21 +1437,28 @@
 
       <!-- Creative Details Screen -->
       <div id="creativeDetails" style="display: none;">
+        <!-- Trinetra Section -->
+        <div id="creativeTrinetraSection" style="display: none;">
+          <div class="sub-section-title">Trinetra &mdash; Brand &amp; Social Media Posters</div>
+          <div class="sub-section-sub">Creative design posters and promotional graphics</div>
+          <div class="poster-grid" id="trinetraPosterGrid"></div>
+        </div>
+
+        <!-- Exigo Section -->
+        <div id="creativeExigoSection" style="display: none;">
+          <div class="sub-section-title">Exigo &amp; Campaign Posters</div>
+          <div class="sub-section-sub">Designs for Exigo Consulting and brand campaigns</div>
+          <div class="poster-grid" id="exigoPosterGrid"></div>
+        </div>
+
         <!-- GeekOnDemand Section -->
         <div id="creativeGodSection" style="display: none;">
           <div class="ov-tabs">
-            <button class="ov-tab active" onclick="switchTab('creative','posters')">&#127912; Canva Posters</button>
-            <button class="ov-tab" onclick="switchTab('creative','carousel')">&#128247; Router Carousel</button>
+            <button class="ov-tab active" onclick="switchTab('creative','carousel')">&#128247; Router Carousel</button>
             <button class="ov-tab" onclick="switchTab('creative','videos')">&#127916; Videos &amp; Reels</button>
           </div>
           
-          <div class="ov-tab-content active" id="creative-tab-posters">
-            <div class="sub-section-title">GeekOnDemand &mdash; Service Posters</div>
-            <div class="sub-section-sub">Social media creatives for GeekOnDemand service promotions</div>
-            <div class="poster-grid" id="newPosterGrid"></div>
-          </div>
-          
-          <div class="ov-tab-content" id="creative-tab-carousel">
+          <div class="ov-tab-content active" id="creative-tab-carousel">
             <div class="sub-section-title">Router Replacement &mdash; Carousel Post</div>
             <div class="sub-section-sub">5 Signs Your Router Needs Replacement &mdash; Instagram/LinkedIn carousel</div>
             <div class="carousel" id="mainCarousel">
@@ -1461,13 +1474,6 @@
             <div class="sub-section-sub">Social media reels and explainer videos for GeekOnDemand</div>
             <div class="video-grid" id="videoGrid"></div>
           </div>
-        </div>
-        
-        <!-- Exigo Section -->
-        <div id="creativeExigoSection" style="display: none;">
-          <div class="sub-section-title">Exigo &amp; Other Campaign Posters</div>
-          <div class="sub-section-sub">Designs for Exigo Consulting and other brand campaigns</div>
-          <div class="poster-grid" id="oldPosterGrid"></div>
         </div>
       </div>
     </div>
@@ -1494,91 +1500,100 @@
   </div>
 
   <script>
-    var godData = [{ keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/BACKUP%20AND%20RESTOR-1.png" target="_blank">Backup & Restore Services</a>', rank: '1', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/BACKUP%20AND%20RESTOR-1.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/CLOUD%2026.png" target="_blank">Cloud Services</a>', rank: '26', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/CLOUD%2026.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/DATA%20LOSS-2.png" target="_blank">Data Loss Prevention</a>', rank: '2', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/DATA%20LOSS-2.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/DLP-13.png" target="_blank">DLP Solutions</a>', rank: '13', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/DLP-13.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/ROUTER%20MAINTANESS-40.png" target="_blank">Router Maintenance</a>', rank: '40', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/ROUTER%20MAINTANESS-40.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/ROUTER-39.png" target="_blank">Router Repair Services</a>', rank: '39', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/ROUTER-39.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/SERVER-16.png" target="_blank">Server Services</a>', rank: '16', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/SERVER-16.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/cctv%20sequrity%20services%204.png" target="_blank">CCTV Security Services</a>', rank: '4', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/cctv%20sequrity%20services%204.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/cctv%20services%20ai.png" target="_blank">CCTV Services</a>', rank: 'AI Featured', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/cctv%20services%20ai.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/cctv%20services-4.png" target="_blank">CCTV Services</a>', rank: '4', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/cctv%20services-4.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/cloud%20back%20up-4.png" target="_blank">Cloud Backup</a>', rank: '4', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/cloud%20back%20up-4.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/data%20recovery%20services-18.png" target="_blank">Data Recovery Services</a>', rank: '18', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/data%20recovery%20services-18.png' },
-    { keyword: 'Data Recovery', rank: '18', img: 'Rankings/data recovery-18.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/it%20services%20and%20support%20gmb.png" target="_blank">IT Services & Support</a>', rank: 'GMB Top', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/it%20services%20and%20support%20gmb.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/laptop-1.png" target="_blank">Laptop Repair Services</a>', rank: '1', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/laptop-1.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/laptop-13.png" target="_blank">Laptop Repair Services</a>', rank: '13', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/laptop-13.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/laptop-19.png" target="_blank">Laptop Repair</a>', rank: '19', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/laptop-19.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/laptop-22.png" target="_blank">Laptop Services</a>', rank: '22', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/laptop-22.png' },
-    { keyword: 'Laptop Repair Hyderabad', rank: '35', img: 'Rankings/laptop-35.png' },
-    { keyword: 'On-Demand Tech Support', rank: '1', img: 'Rankings/ondemand tech support 1.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/printer%20services-25.png" target="_blank">Printer Services</a>', rank: '25', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/geekondemand/printer%20services-25.png' }];
-    var mirajData = [{ keyword: 'email marketing cost in dubai', rank: '1', img: 'seo/Screenshot 2026-03-16 120838.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-10%20101534.png" target="_blank">digital transformation for smes uae</a> (<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-10%20101750.png" target="_blank">AI</a>)', rank: '1', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-10%20101534.png' },
-    { keyword: 'Ad Spend Consultation Dubai', rank: '8', img: 'seo/Screenshot 2026-03-10 101317.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-02-19%20125131.png" target="_blank">#digitalmarketingdubai</a>', rank: '7', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-02-19%20125131.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-02-27%20104823.png" target="_blank">Dubai digital marketing</a>', rank: '15', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-02-27%20104823.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-02-27%20104502.png" target="_blank">digital transformation for smes uae (2nd check)</a>', rank: '11', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-02-27%20104502.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-10%20101317.png" target="_blank">marketing roadmap uae</a>', rank: '20', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-10%20101317.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-10%20102241.png" target="_blank">digital transformation challenges smes uae</a>', rank: '33', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-10%20102241.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-16%20120838.png" target="_blank">digital marketing budget smes uae accounting</a> (<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-16%20122501.png" target="_blank">Alt</a>)', rank: '2', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-16%20120838.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-02-27%20104002.png" target="_blank">social media marketing cost in dubai</a>', rank: '56', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-02-27%20104002.png' },
-    { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-10%20102011.png" target="_blank">digital business strategy uae</a>', rank: '73', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-10%20102011.png' },
-    { keyword: 'Digital Marketing Emirates', rank: '50', img: 'seo/Screenshot 2026-03-10 102241.png' }];
-    var benchXchangeData = [
-      { keyword: 'staffing exchange platforms', rank: '2', img: 'Rankings/WhatsApp Image 2026-08-17 at 3.18.27 PM.jpeg' },
-      { keyword: 'staffing exchange platforms (AI Overview)', rank: 'AI Featured', img: 'Rankings/WhatsApp Image 2026-08-17 at 3.19.05 PM.jpeg' },
-      { keyword: 'bench talent marketplace', rank: '2', img: 'Rankings/WhatsApp Image 2026-08-17 at 3.21.11 PM.jpeg' },
-      { keyword: 'bench management platform', rank: '7', img: 'Rankings/WhatsApp Image 2026-08-17 at 3.23.07 PM.jpeg' }
+    var godData = [
+      { keyword: 'Backup & Restore Services', rank: '1', img: 'seo/GEEKONDEMAND/BACKUP AND RESTOR-1.png' },
+      { keyword: 'Cloud Services', rank: '26', img: 'seo/GEEKONDEMAND/CLOUD 26.png' },
+      { keyword: 'Data Loss Prevention', rank: '2', img: 'seo/GEEKONDEMAND/DATA LOSS-2.png' },
+      { keyword: 'DLP Solutions', rank: '13', img: 'seo/GEEKONDEMAND/DLP-13.png' },
+      { keyword: 'Router Maintenance', rank: '40', img: 'seo/GEEKONDEMAND/ROUTER MAINTANESS-40.png' },
+      { keyword: 'Router Repair Services', rank: '39', img: 'seo/GEEKONDEMAND/ROUTER-39.png' },
+      { keyword: 'Server Services', rank: '16', img: 'seo/GEEKONDEMAND/SERVER-16.png' },
+      { keyword: 'CCTV Security Services', rank: '4', img: 'seo/GEEKONDEMAND/cctv sequrity services 4.png' },
+      { keyword: 'CCTV Services', rank: 'AI Featured', img: 'seo/GEEKONDEMAND/cctv services ai.png' },
+      { keyword: 'CCTV Services', rank: '4', img: 'seo/GEEKONDEMAND/cctv services-4.png' },
+      { keyword: 'Cloud Backup', rank: '4', img: 'seo/GEEKONDEMAND/cloud back up-4.png' },
+      { keyword: 'Data Recovery Services', rank: '18', img: 'seo/GEEKONDEMAND/data recovery services-18.png' },
+      { keyword: 'Data Recovery', rank: '18', img: 'seo/GEEKONDEMAND/data recovery-18.png' },
+      { keyword: 'IT Services & Support', rank: 'GMB Top', img: 'seo/GEEKONDEMAND/it services and support gmb.png' },
+      { keyword: 'Laptop Repair Services', rank: '1', img: 'seo/GEEKONDEMAND/laptop-1.png' },
+      { keyword: 'Laptop Repair Services', rank: '13', img: 'seo/GEEKONDEMAND/laptop-13.png' },
+      { keyword: 'Laptop Repair', rank: '19', img: 'seo/GEEKONDEMAND/laptop-19.png' },
+      { keyword: 'Laptop Services', rank: '22', img: 'seo/GEEKONDEMAND/laptop-22.png' },
+      { keyword: 'Laptop Repair Hyderabad', rank: '35', img: 'seo/GEEKONDEMAND/laptop-35.png' },
+      { keyword: 'On-Demand Tech Support', rank: '1', img: 'seo/GEEKONDEMAND/ondemand tech support 1.png' },
+      { keyword: 'Printer Services', rank: '25', img: 'seo/GEEKONDEMAND/printer services-25.png' }
     ];
-    var oldPosterData = [];
-    var newPosterData = [
-      { label: 'Creative Design Poster 1', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.23 PM.jpeg' },
-      { label: 'Creative Design Poster 2', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.24 PM.jpeg' },
-      { label: 'Creative Design Poster 3', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.25 PM (1).jpeg' },
-      { label: 'Creative Design Poster 4', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.25 PM (2).jpeg' },
-      { label: 'Creative Design Poster 5', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.25 PM.jpeg' },
-      { label: 'Creative Design Poster 6', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.26 PM (1).jpeg' },
-      { label: 'Creative Design Poster 7', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.26 PM.jpeg' },
-      { label: 'Creative Design Poster 8', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.27 PM (1).jpeg' },
-      { label: 'Creative Design Poster 9', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.27 PM (2).jpeg' },
-      { label: 'Creative Design Poster 10', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.27 PM.jpeg' },
-      { label: 'Creative Design Poster 11', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.28 PM (1).jpeg' },
-      { label: 'Creative Design Poster 12', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.28 PM.jpeg' },
-      { label: 'Creative Design Poster 13', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.29 PM (1).jpeg' },
-      { label: 'Creative Design Poster 14', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.29 PM (2).jpeg' },
-      { label: 'Creative Design Poster 15', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.29 PM.jpeg' },
-      { label: 'Creative Design Poster 16', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.30 PM.jpeg' },
-      { label: 'Creative Design Poster 17', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.31 PM (1).jpeg' },
-      { label: 'Creative Design Poster 18', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.31 PM.jpeg' },
-      { label: 'Creative Design Poster 19', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.32 PM (1).jpeg' },
-      { label: 'Creative Design Poster 20', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.32 PM.jpeg' },
-      { label: 'Creative Design Poster 21', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.33 PM (1).jpeg' },
-      { label: 'Creative Design Poster 22', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.33 PM (2).jpeg' },
-      { label: 'Creative Design Poster 23', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.33 PM.jpeg' }
+    var mirajData = [
+      { keyword: 'email marketing cost in dubai', rank: '1', img: 'seo/MIRAJ/Screenshot 2026-03-16 120838.png' },
+      { keyword: 'digital transformation for smes uae (AI)', rank: '1', img: 'seo/MIRAJ/Screenshot 2026-03-10 101534.png' },
+      { keyword: 'Ad Spend Consultation Dubai', rank: '8', img: 'seo/MIRAJ/Screenshot 2026-03-10 101317.png' },
+      { keyword: '#digitalmarketingdubai', rank: '7', img: 'seo/MIRAJ/Screenshot 2026-02-19 125131.png' },
+      { keyword: 'Dubai digital marketing', rank: '15', img: 'seo/MIRAJ/Screenshot 2026-02-27 104823.png' },
+      { keyword: 'digital transformation for smes uae (2nd check)', rank: '11', img: 'seo/MIRAJ/Screenshot 2026-02-27 104502.png' },
+      { keyword: 'marketing roadmap uae', rank: '20', img: 'seo/MIRAJ/Screenshot 2026-03-10 101317.png' },
+      { keyword: 'digital transformation challenges smes uae', rank: '33', img: 'seo/MIRAJ/Screenshot 2026-03-10 102241.png' },
+      { keyword: 'digital marketing budget smes uae accounting', rank: '2', img: 'seo/MIRAJ/Screenshot 2026-03-16 120838.png' },
+      { keyword: 'social media marketing cost in dubai', rank: '56', img: 'seo/MIRAJ/Screenshot 2026-02-27 104002.png' },
+      { keyword: 'digital business strategy uae', rank: '73', img: 'seo/MIRAJ/Screenshot 2026-03-10 102011.png' },
+      { keyword: 'Digital Marketing Emirates', rank: '50', img: 'seo/MIRAJ/Screenshot 2026-03-10 102241.png' }
+    ];
+    var benchXchangeData = [
+      { keyword: 'staffing exchange platforms', rank: '2', img: 'seo/BXC/WhatsApp Image 2026-08-17 at 3.18.27 PM.jpeg' },
+      { keyword: 'staffing exchange platforms (AI Overview)', rank: 'AI Featured', img: 'seo/BXC/WhatsApp Image 2026-08-17 at 3.19.05 PM.jpeg' },
+      { keyword: 'bench talent marketplace', rank: '2', img: 'seo/BXC/WhatsApp Image 2026-08-17 at 3.21.11 PM.jpeg' },
+      { keyword: 'bench management platform', rank: '7', img: 'seo/BXC/WhatsApp Image 2026-08-17 at 3.23.07 PM.jpeg' }
+    ];
+    var trinetraPosterData = [
+      { label: 'Creative Design Poster 1', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.23 PM.jpeg' },
+      { label: 'Creative Design Poster 2', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.24 PM.jpeg' },
+      { label: 'Creative Design Poster 3', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.25 PM (1).jpeg' },
+      { label: 'Creative Design Poster 4', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.25 PM (2).jpeg' },
+      { label: 'Creative Design Poster 5', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.25 PM.jpeg' },
+      { label: 'Creative Design Poster 6', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.26 PM (1).jpeg' },
+      { label: 'Creative Design Poster 7', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.26 PM.jpeg' },
+      { label: 'Creative Design Poster 8', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.27 PM (1).jpeg' },
+      { label: 'Creative Design Poster 9', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.27 PM (2).jpeg' },
+      { label: 'Creative Design Poster 10', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.27 PM.jpeg' },
+      { label: 'Creative Design Poster 11', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.28 PM (1).jpeg' },
+      { label: 'Creative Design Poster 12', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.28 PM.jpeg' },
+      { label: 'Creative Design Poster 13', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.29 PM (1).jpeg' },
+      { label: 'Creative Design Poster 14', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.29 PM (2).jpeg' },
+      { label: 'Creative Design Poster 15', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.29 PM.jpeg' },
+      { label: 'Creative Design Poster 16', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.30 PM.jpeg' },
+      { label: 'Creative Design Poster 17', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.31 PM (1).jpeg' },
+      { label: 'Creative Design Poster 18', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.31 PM.jpeg' },
+      { label: 'Creative Design Poster 19', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.32 PM (1).jpeg' },
+      { label: 'Creative Design Poster 20', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.32 PM.jpeg' },
+      { label: 'Creative Design Poster 21', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.33 PM (1).jpeg' },
+      { label: 'Creative Design Poster 22', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.33 PM (2).jpeg' },
+      { label: 'Creative Design Poster 23', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.33 PM.jpeg' },
+      { label: 'Creative Design Poster 24 — Open Positions', img: 'Content & creative Designs/Trinetra/open positions.jpeg' }
+    ];
+    var exigoPosterData = [
+      { label: 'Exigo Poster 1', img: 'Content & creative Designs/EXIGO/WhatsApp Image 2026-08-01 at 9.25.52 PM (1).jpeg' },
+      { label: 'Exigo Poster 2', img: 'Content & creative Designs/EXIGO/WhatsApp Image 2026-08-01 at 9.25.52 PM.jpeg' },
+      { label: 'Exigo Poster 3', img: 'Content & creative Designs/EXIGO/WhatsApp Image 2026-08-01 at 9.25.53 PM.jpeg' }
     ];
     var carouselData = [];
     var videoData = [];
     var ugcData = [
       { label: 'Akshitha Developers UGC Ad', src: 'UGC/UGC-VIDEOS/Akshitha develoepers.mp4', localSrc: 'UGC/UGC-VIDEOS/Akshitha develoepers.mp4', tag: 'Full Ad' },
       { label: 'Akshitha Developers — Ad 2', src: 'UGC/UGC-VIDEOS/Akshitha developers-1.mp4', localSrc: 'UGC/UGC-VIDEOS/Akshitha developers-1.mp4', tag: 'Full Ad' },
-      { label: 'VGM UGC Ad', src: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/UGC/VGM-UGC-ADS.mp4', localSrc: 'UGC/UGC-VIDEOS/VGM-UGC-ADS.mp4', tag: 'Full Ad' },
-      { label: 'KitKat UGC Ad', src: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/UGC/KITKAT-UGC-AD.mp4', localSrc: 'UGC/UGC-VIDEOS/KITKAT-UGC-AD.mp4', tag: 'Full Ad' },
-      { label: 'Foxtale Moisturiser UGC Ad', src: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/UGC/Foxtale%20Moisturiser-UGC%20AD.mp4', localSrc: 'UGC/UGC-VIDEOS/Foxtale Moisturiser-UGC AD.mp4', tag: 'Full Ad' },
-      { label: 'VMG Shoes', src: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/UGC/VMG%20SHOES.mp4', localSrc: 'UGC/UGC-VIDEOS/VMG SHOES.mp4', tag: 'Full Ad' },
-      { label: 'Molecular Sunscreen — Protect Your Glow', src: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/UGC/Molecular%20Sunscreen%20Protect%20Your%20Glow%20Today%20(online-video-cutter.com).mp4', localSrc: 'UGC/UGC-VIDEOS/Molecular Sunscreen Protect Your Glow Today (online-video-cutter.com).mp4', tag: 'Full Ad' }
+      { label: 'VGM UGC Ad', src: 'UGC/UGC-VIDEOS/VGM-UGC-ADS.mp4', localSrc: 'UGC/UGC-VIDEOS/VGM-UGC-ADS.mp4', tag: 'Full Ad' },
+      { label: 'KitKat UGC Ad', src: 'UGC/UGC-VIDEOS/KITKAT-UGC-AD.mp4', localSrc: 'UGC/UGC-VIDEOS/KITKAT-UGC-AD.mp4', tag: 'Full Ad' },
+      { label: 'Foxtale Moisturiser UGC Ad', src: 'UGC/UGC-VIDEOS/Foxtale Moisturiser-UGC AD.mp4', localSrc: 'UGC/UGC-VIDEOS/Foxtale Moisturiser-UGC AD.mp4', tag: 'Full Ad' },
+      { label: 'VMG Shoes', src: 'UGC/UGC-VIDEOS/VMG SHOES.mp4', localSrc: 'UGC/UGC-VIDEOS/VMG SHOES.mp4', tag: 'Full Ad' },
+      { label: 'Molecular Sunscreen — Protect Your Glow', src: 'UGC/UGC-VIDEOS/Molecular Sunscreen Protect Your Glow Today (online-video-cutter.com).mp4', localSrc: 'UGC/UGC-VIDEOS/Molecular Sunscreen Protect Your Glow Today (online-video-cutter.com).mp4', tag: 'Full Ad' }
     ];
 
     var builtSEO = false, builtCreative = false, builtUGC = false, carouselIdx = 0;
-    var activeTabs = { creative: 'posters' };
+    var activeTabs = { creative: 'carousel' };
 
     var currentSeoView = 'companies'; // 'companies' or 'rankings'
-    var selectedSeoCompanyId = null; // 'god' or 'miraj'
+    var selectedSeoCompanyId = null; // 'god' or 'benchXchange'
 
     var currentCreativeView = 'companies'; // 'companies' or 'details'
-    var selectedCreativeCompanyId = null; // 'god' or 'exigo'
+    var selectedCreativeCompanyId = null; // 'trinetra', 'exigo', or 'god'
 
     function rankClass(r) { if (r === "1") return "top1"; if (["2", "3"].includes(r)) return "top3"; if (["4", "5", "6", "7", "8", "9", "10"].includes(r)) return "top10"; if (["11", "12", "13", "14", "15", "16", "17", "18", "19", "20"].includes(r)) return "top20"; if (typeof r === "string" && (r.includes("GMB") || r.includes("AI") || r.includes("Featured"))) return "special"; return "other"; }
     function rankLabel(r) { if (typeof r === "string" && r.includes("GMB")) return "&#128205; GMB Top"; if (typeof r === "string" && (r.includes("AI") || r.includes("Featured"))) return "&#129302; AI Featured"; return "Rank #" + r; }
@@ -1594,13 +1609,24 @@
       document.getElementById("benchXchangeGrid").innerHTML = benchXchangeData.map(function (d) { return '<div class="rank-card" onclick="openLb(this, event)"><img class="rank-img" src="' + d.img + '" alt="' + stripTags(d.keyword) + '" loading="lazy"><div class="rank-info"><div class="rank-keyword">' + d.keyword + '</div><span class="rank-pos ' + rankClass(d.rank) + '">' + rankLabel(d.rank) + '</span></div></div>'; }).join("");
     }
     function buildCreative() {
-      document.getElementById("newPosterGrid").innerHTML = newPosterData.map(function (p) { return '<div class="poster-card" onclick="openLb(this, event)"><img class="poster-img" src="' + p.img + '" alt="' + stripTags(p.label) + '" loading="lazy"><div class="poster-label">' + p.label + '</div></div>'; }).join("");
-      document.getElementById("oldPosterGrid").innerHTML = oldPosterData.map(function (p) { return '<div class="poster-card" onclick="openLb(this, event)"><img class="poster-img" src="' + p.img + '" alt="' + stripTags(p.label) + '" loading="lazy"><div class="poster-label">' + p.label + '</div></div>'; }).join("");
+      var trinetraEl = document.getElementById("trinetraPosterGrid");
+      if (trinetraEl) {
+        trinetraEl.innerHTML = trinetraPosterData.map(function (p) { return '<div class="poster-card" onclick="openLb(this, event)"><img class="poster-img" src="' + p.img + '" alt="' + stripTags(p.label) + '" loading="lazy"><div class="poster-label">' + p.label + '</div></div>'; }).join("");
+      }
+      var exigoEl = document.getElementById("exigoPosterGrid");
+      if (exigoEl) {
+        exigoEl.innerHTML = exigoPosterData.map(function (p) { return '<div class="poster-card" onclick="openLb(this, event)"><img class="poster-img" src="' + p.img + '" alt="' + stripTags(p.label) + '" loading="lazy"><div class="poster-label">' + p.label + '</div></div>'; }).join("");
+      }
       var track = document.getElementById("carouselTrack");
       var dots = document.getElementById("carouselDots");
-      track.innerHTML = carouselData.map(function (src, i) { return '<div class="carousel-slide"><img src="' + src + '" alt="Slide ' + (i + 1) + '" loading="lazy"></div>'; }).join("");
-      dots.innerHTML = carouselData.map(function (_, i) { return '<button class="carousel-dot' + (i === 0 ? ' active' : '') + '" onclick="carouselGo(' + i + ')"></button>'; }).join("");
-      document.getElementById("videoGrid").innerHTML = videoData.map(function (v) { return '<div class="video-card"><video controls preload="metadata" style="width:100%;display:block;max-height:220px;background:#111"><source src="' + v.src + '" type="video/mp4"></video><div class="video-info"><div class="video-label">' + v.label + '</div><div class="video-brand">GeekOnDemand</div></div></div>'; }).join("");
+      if (track && dots) {
+        track.innerHTML = carouselData.map(function (src, i) { return '<div class="carousel-slide"><img src="' + src + '" alt="Slide ' + (i + 1) + '" loading="lazy"></div>'; }).join("");
+        dots.innerHTML = carouselData.map(function (_, i) { return '<button class="carousel-dot' + (i === 0 ? ' active' : '') + '" onclick="carouselGo(' + i + ')"></button>'; }).join("");
+      }
+      var videoEl = document.getElementById("videoGrid");
+      if (videoEl) {
+        videoEl.innerHTML = videoData.map(function (v) { return '<div class="video-card"><video controls preload="metadata" style="width:100%;display:block;max-height:220px;background:#111"><source src="' + v.src + '" type="video/mp4"></video><div class="video-info"><div class="video-label">' + v.label + '</div><div class="video-brand">GeekOnDemand</div></div></div>'; }).join("");
+      }
     }
     function buildUGC() {
       document.getElementById("ugcGrid").innerHTML = ugcData.map(function (v) {
@@ -1669,14 +1695,20 @@
       document.getElementById("creativeDetails").style.display = "block";
       
       // Toggle company sections
-      if (companyId === 'god') {
-        document.getElementById("creativeGodSection").style.display = "block";
-        document.getElementById("creativeExigoSection").style.display = "none";
-        document.getElementById("creativeOvTitle").innerText = "GeekOnDemand Creative Portfolio";
+      var trinetraSec = document.getElementById("creativeTrinetraSection");
+      var exigoSec = document.getElementById("creativeExigoSection");
+      var godSec = document.getElementById("creativeGodSection");
+
+      if (trinetraSec) trinetraSec.style.display = companyId === 'trinetra' ? "block" : "none";
+      if (exigoSec) exigoSec.style.display = companyId === 'exigo' ? "block" : "none";
+      if (godSec) godSec.style.display = companyId === 'god' ? "block" : "none";
+
+      if (companyId === 'trinetra') {
+        document.getElementById("creativeOvTitle").innerText = "Trinetra Creative Portfolio";
       } else if (companyId === 'exigo') {
-        document.getElementById("creativeGodSection").style.display = "none";
-        document.getElementById("creativeExigoSection").style.display = "block";
         document.getElementById("creativeOvTitle").innerText = "Exigo Campaign Portfolio";
+      } else if (companyId === 'god') {
+        document.getElementById("creativeOvTitle").innerText = "GeekOnDemand Creative Portfolio";
       }
       
       // Scroll to top of overlay container
