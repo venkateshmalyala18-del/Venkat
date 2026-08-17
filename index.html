@@ -1002,7 +1002,111 @@
       color: var(--accent);
     }
 
+    /* SEO COMPANY SELECTION */
+    .company-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 800px;
+      margin: 2rem auto;
+    }
+
+    .company-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .company-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .company-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+      border-color: var(--accent);
+    }
+
+    .company-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .company-logo {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      width: 80px;
+      height: 80px;
+      background: var(--accent-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+
+    .company-card:hover .company-logo {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .company-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .company-desc {
+      font-size: 14px;
+      color: var(--ink-soft);
+      line-height: 1.5;
+      margin-bottom: 2rem;
+      flex-grow: 1;
+    }
+
+    .company-btn {
+      display: inline-block;
+      padding: 10px 22px;
+      border-radius: 6px;
+      background: var(--paper-warm);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      border: 1px solid var(--border);
+    }
+
+    .company-card:hover .company-btn {
+      background: var(--accent);
+      color: var(--white);
+      border-color: var(--accent);
+      box-shadow: 0 4px 10px rgba(200, 80, 26, 0.2);
+    }
+
     @media(max-width:768px) {
+
+      .company-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
 
       .hero-grid,
       .contact-grid {
@@ -1238,53 +1342,133 @@
   <!-- SEO OVERLAY -->
   <div class="overlay" id="seoOverlay">
     <div class="ov-header">
-      <span class="ov-title">SEO Rankings Portfolio</span>
-      <button class="back-btn" onclick="closeOverlay('seoOverlay')">&#8592; Back</button>
+      <span class="ov-title" id="seoOvTitle">SEO Rankings Portfolio</span>
+      <button class="back-btn" id="seoBackBtn" onclick="handleSeoBack()">&#8592; Back</button>
     </div>
     <div class="ov-inner">
-      <div class="sub-section-title">GeekOnDemand &mdash; Hyderabad</div>
-      <div class="sub-section-sub">Keyword rankings achieved for an on-demand IT services platform</div>
-      <div class="rank-grid" id="godGrid"></div>
-      <div class="sub-section-title">MIRAJ IT Consultancy &mdash; UAE</div>
-      <div class="sub-section-sub">Keyword rankings achieved for a Dubai-based digital consultancy</div>
-      <div class="rank-grid" id="mirajGrid"></div>
+      <!-- Company Selection Screen -->
+      <div id="seoCompanySelect">
+        <h2 class="sub-section-title" style="text-align: center; margin-top: 1rem; margin-bottom: 2.5rem;">Select a Company</h2>
+        <div class="company-grid">
+          <div class="company-card" onclick="selectSeoCompany('god')">
+            <div class="company-logo">🏢</div>
+            <h3 class="company-name">GeekOnDemand</h3>
+            <p class="company-desc">Hyderabad, India &bull; On-Demand IT Services Platform</p>
+            <span class="company-btn">View Rankings &rarr;</span>
+          </div>
+          <div class="company-card" onclick="selectSeoCompany('miraj')">
+            <div class="company-logo">🌍</div>
+            <h3 class="company-name">MIRAJ IT Consultancy</h3>
+            <p class="company-desc">UAE &bull; Dubai-Based Digital Consultancy</p>
+            <span class="company-btn">View Rankings &rarr;</span>
+          </div>
+          <div class="company-card" onclick="selectSeoCompany('benchXchange')">
+            <div class="company-logo">🤝</div>
+            <h3 class="company-name">BenchXchange</h3>
+            <p class="company-desc">India &bull; IT Bench Talent Marketplace &amp; Staffing Exchange</p>
+            <span class="company-btn">View Rankings &rarr;</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rankings Details Screen -->
+      <div id="seoRankingsDetails" style="display: none;">
+        <!-- GeekOnDemand Section -->
+        <div id="godRankingsSection" style="display: none;">
+          <div class="company-detail-header">
+            <h2 class="sub-section-title">GeekOnDemand &mdash; Hyderabad</h2>
+            <div class="sub-section-sub">Keyword rankings achieved for an on-demand IT services platform</div>
+          </div>
+          <div class="rank-grid" id="godGrid"></div>
+        </div>
+        
+        <!-- Miraj Section -->
+        <div id="mirajRankingsSection" style="display: none;">
+          <div class="company-detail-header">
+            <h2 class="sub-section-title">MIRAJ IT Consultancy &mdash; UAE</h2>
+            <div class="sub-section-sub">Keyword rankings achieved for a Dubai-based digital consultancy</div>
+          </div>
+          <div class="rank-grid" id="mirajGrid"></div>
+        </div>
+
+        <!-- BenchXchange Section -->
+        <div id="benchXchangeSection" style="display: none;">
+          <div class="company-detail-header">
+            <h2 class="sub-section-title">BenchXchange &mdash; India</h2>
+            <div class="sub-section-sub">Keyword rankings achieved for a B2B talent marketplace &amp; staffing exchange</div>
+          </div>
+          <div class="rank-grid" id="benchXchangeGrid"></div>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- CREATIVE OVERLAY -->
   <div class="overlay" id="creativeOverlay">
     <div class="ov-header">
-      <span class="ov-title">Creative Portfolio</span>
-      <button class="back-btn" onclick="closeOverlay('creativeOverlay')">&#8592; Back</button>
+      <span class="ov-title" id="creativeOvTitle">Creative Portfolio</span>
+      <button class="back-btn" id="creativeBackBtn" onclick="handleCreativeBack()">&#8592; Back</button>
     </div>
     <div class="ov-inner">
-      <div class="ov-tabs">
-        <button class="ov-tab active" onclick="switchTab('creative','posters')">&#127912; Canva Posters</button>
-        <button class="ov-tab" onclick="switchTab('creative','carousel')">&#128247; Router Carousel</button>
-        <button class="ov-tab" onclick="switchTab('creative','videos')">&#127916; Videos &amp; Reels</button>
-      </div>
-      <div class="ov-tab-content active" id="creative-tab-posters">
-        <div class="sub-section-title">GeekOnDemand &mdash; Service Posters</div>
-        <div class="sub-section-sub">Social media creatives for GeekOnDemand service promotions</div>
-        <div class="poster-grid" id="newPosterGrid"></div>
-        <div class="sub-section-title">Exigo &amp; Other Campaign Posters</div>
-        <div class="sub-section-sub">Designs for Exigo Consulting and other brand campaigns</div>
-        <div class="poster-grid" id="oldPosterGrid"></div>
-      </div>
-      <div class="ov-tab-content" id="creative-tab-carousel">
-        <div class="sub-section-title">Router Replacement &mdash; Carousel Post</div>
-        <div class="sub-section-sub">5 Signs Your Router Needs Replacement &mdash; Instagram/LinkedIn carousel</div>
-        <div class="carousel" id="mainCarousel">
-          <div class="carousel-track" id="carouselTrack"></div>
-          <button class="carousel-btn carousel-prev" onclick="carouselMove(-1)">&#8249;</button>
-          <button class="carousel-btn carousel-next" onclick="carouselMove(1)">&#8250;</button>
-          <div class="carousel-dots" id="carouselDots"></div>
+      <!-- Company Selection Screen -->
+      <div id="creativeCompanySelect">
+        <h2 class="sub-section-title" style="text-align: center; margin-top: 1rem; margin-bottom: 2.5rem;">Select a Company</h2>
+        <div class="company-grid">
+          <div class="company-card" onclick="selectCreativeCompany('god')">
+            <div class="company-logo">🏢</div>
+            <h3 class="company-name">GeekOnDemand</h3>
+            <p class="company-desc">Hyderabad, India &bull; Service Posters, Carousels, & Video Explaners</p>
+            <span class="company-btn">View Creatives &rarr;</span>
+          </div>
+          <div class="company-card" onclick="selectCreativeCompany('exigo')">
+            <div class="company-logo">👔</div>
+            <h3 class="company-name">Exigo Consulting</h3>
+            <p class="company-desc">Campaign posters & promotional creatives for business consulting</p>
+            <span class="company-btn">View Creatives &rarr;</span>
+          </div>
         </div>
       </div>
-      <div class="ov-tab-content" id="creative-tab-videos">
-        <div class="sub-section-title">Service Videos &amp; Reels</div>
-        <div class="sub-section-sub">Social media reels and explainer videos for GeekOnDemand</div>
-        <div class="video-grid" id="videoGrid"></div>
+
+      <!-- Creative Details Screen -->
+      <div id="creativeDetails" style="display: none;">
+        <!-- GeekOnDemand Section -->
+        <div id="creativeGodSection" style="display: none;">
+          <div class="ov-tabs">
+            <button class="ov-tab active" onclick="switchTab('creative','posters')">&#127912; Canva Posters</button>
+            <button class="ov-tab" onclick="switchTab('creative','carousel')">&#128247; Router Carousel</button>
+            <button class="ov-tab" onclick="switchTab('creative','videos')">&#127916; Videos &amp; Reels</button>
+          </div>
+          
+          <div class="ov-tab-content active" id="creative-tab-posters">
+            <div class="sub-section-title">GeekOnDemand &mdash; Service Posters</div>
+            <div class="sub-section-sub">Social media creatives for GeekOnDemand service promotions</div>
+            <div class="poster-grid" id="newPosterGrid"></div>
+          </div>
+          
+          <div class="ov-tab-content" id="creative-tab-carousel">
+            <div class="sub-section-title">Router Replacement &mdash; Carousel Post</div>
+            <div class="sub-section-sub">5 Signs Your Router Needs Replacement &mdash; Instagram/LinkedIn carousel</div>
+            <div class="carousel" id="mainCarousel">
+              <div class="carousel-track" id="carouselTrack"></div>
+              <button class="carousel-btn carousel-prev" onclick="carouselMove(-1)">&#8249;</button>
+              <button class="carousel-btn carousel-next" onclick="carouselMove(1)">&#8250;</button>
+              <div class="carousel-dots" id="carouselDots"></div>
+            </div>
+          </div>
+          
+          <div class="ov-tab-content" id="creative-tab-videos">
+            <div class="sub-section-title">Service Videos &amp; Reels</div>
+            <div class="sub-section-sub">Social media reels and explainer videos for GeekOnDemand</div>
+            <div class="video-grid" id="videoGrid"></div>
+          </div>
+        </div>
+        
+        <!-- Exigo Section -->
+        <div id="creativeExigoSection" style="display: none;">
+          <div class="sub-section-title">Exigo &amp; Other Campaign Posters</div>
+          <div class="sub-section-sub">Designs for Exigo Consulting and other brand campaigns</div>
+          <div class="poster-grid" id="oldPosterGrid"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1343,6 +1527,12 @@
     { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-02-27%20104002.png" target="_blank">social media marketing cost in dubai</a>', rank: '56', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-02-27%20104002.png' },
     { keyword: '<a href="https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-10%20102011.png" target="_blank">digital business strategy uae</a>', rank: '73', img: 'https://vhvivkwswgfgglmzyvbm.supabase.co/storage/v1/object/public/seorankingsportfolio/Miraj/Screenshot%202026-03-10%20102011.png' },
     { keyword: 'Digital Marketing Emirates', rank: '50', img: 'seo/Screenshot 2026-03-10 102241.png' }];
+    var benchXchangeData = [
+      { keyword: 'staffing exchange platforms', rank: '2', img: 'Rankings/WhatsApp Image 2026-08-17 at 3.18.27 PM.jpeg' },
+      { keyword: 'staffing exchange platforms (AI Overview)', rank: 'AI Featured', img: 'Rankings/WhatsApp Image 2026-08-17 at 3.19.05 PM.jpeg' },
+      { keyword: 'bench talent marketplace', rank: '2', img: 'Rankings/WhatsApp Image 2026-08-17 at 3.21.11 PM.jpeg' },
+      { keyword: 'bench management platform', rank: '7', img: 'Rankings/WhatsApp Image 2026-08-17 at 3.23.07 PM.jpeg' }
+    ];
     var oldPosterData = [];
     var newPosterData = [
       { label: 'Creative Design Poster 1', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.23 PM.jpeg' },
@@ -1369,7 +1559,7 @@
       { label: 'Creative Design Poster 22', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.33 PM (2).jpeg' },
       { label: 'Creative Design Poster 23', img: 'Content & creative Designs/WhatsApp Image 2026-08-01 at 8.08.33 PM.jpeg' }
     ];
-    // var carouselData = [];
+    var carouselData = [];
     var videoData = [];
     var ugcData = [
       { label: 'Akshitha Developers UGC Ad', src: 'UGC/UGC-VIDEOS/Akshitha develoepers.mp4', localSrc: 'UGC/UGC-VIDEOS/Akshitha develoepers.mp4', tag: 'Full Ad' },
@@ -1384,6 +1574,12 @@
     var builtSEO = false, builtCreative = false, builtUGC = false, carouselIdx = 0;
     var activeTabs = { creative: 'posters' };
 
+    var currentSeoView = 'companies'; // 'companies' or 'rankings'
+    var selectedSeoCompanyId = null; // 'god' or 'miraj'
+
+    var currentCreativeView = 'companies'; // 'companies' or 'details'
+    var selectedCreativeCompanyId = null; // 'god' or 'exigo'
+
     function rankClass(r) { if (r === "1") return "top1"; if (["2", "3"].includes(r)) return "top3"; if (["4", "5", "6", "7", "8", "9", "10"].includes(r)) return "top10"; if (["11", "12", "13", "14", "15", "16", "17", "18", "19", "20"].includes(r)) return "top20"; if (typeof r === "string" && (r.includes("GMB") || r.includes("AI") || r.includes("Featured"))) return "special"; return "other"; }
     function rankLabel(r) { if (typeof r === "string" && r.includes("GMB")) return "&#128205; GMB Top"; if (typeof r === "string" && (r.includes("AI") || r.includes("Featured"))) return "&#129302; AI Featured"; return "Rank #" + r; }
 
@@ -1395,6 +1591,7 @@
     function buildSEO() {
       document.getElementById("godGrid").innerHTML = godData.map(function (d) { return '<div class="rank-card" onclick="openLb(this, event)"><img class="rank-img" src="' + d.img + '" alt="' + stripTags(d.keyword) + '" loading="lazy"><div class="rank-info"><div class="rank-keyword">' + d.keyword + '</div><span class="rank-pos ' + rankClass(d.rank) + '">' + rankLabel(d.rank) + '</span></div></div>'; }).join("");
       document.getElementById("mirajGrid").innerHTML = mirajData.map(function (d) { return '<div class="rank-card" onclick="openLb(this, event)"><img class="rank-img" src="' + d.img + '" alt="' + stripTags(d.keyword) + '" loading="lazy"><div class="rank-info"><div class="rank-keyword">' + d.keyword + '</div><span class="rank-pos ' + rankClass(d.rank) + '">' + rankLabel(d.rank) + '</span></div></div>'; }).join("");
+      document.getElementById("benchXchangeGrid").innerHTML = benchXchangeData.map(function (d) { return '<div class="rank-card" onclick="openLb(this, event)"><img class="rank-img" src="' + d.img + '" alt="' + stripTags(d.keyword) + '" loading="lazy"><div class="rank-info"><div class="rank-keyword">' + d.keyword + '</div><span class="rank-pos ' + rankClass(d.rank) + '">' + rankLabel(d.rank) + '</span></div></div>'; }).join("");
     }
     function buildCreative() {
       document.getElementById("newPosterGrid").innerHTML = newPosterData.map(function (p) { return '<div class="poster-card" onclick="openLb(this, event)"><img class="poster-img" src="' + p.img + '" alt="' + stripTags(p.label) + '" loading="lazy"><div class="poster-label">' + p.label + '</div></div>'; }).join("");
@@ -1418,12 +1615,119 @@
     function carouselMove(dir) { carouselGo((carouselIdx + dir + carouselData.length) % carouselData.length); }
     function carouselGo(n) { carouselIdx = n; document.getElementById("carouselTrack").style.transform = "translateX(-" + n + "00%)"; document.querySelectorAll(".carousel-dot").forEach(function (d, i) { d.classList.toggle("active", i === n); }); }
 
+    function selectSeoCompany(companyId) {
+      currentSeoView = 'rankings';
+      selectedSeoCompanyId = companyId;
+      
+      // Hide company list, show rankings details
+      document.getElementById("seoCompanySelect").style.display = "none";
+      document.getElementById("seoRankingsDetails").style.display = "block";
+      
+      // Toggle company sections
+      if (companyId === 'god') {
+        document.getElementById("godRankingsSection").style.display = "block";
+        document.getElementById("mirajRankingsSection").style.display = "none";
+        document.getElementById("benchXchangeSection").style.display = "none";
+        document.getElementById("seoOvTitle").innerText = "GeekOnDemand Rankings";
+      } else if (companyId === 'miraj') {
+        document.getElementById("godRankingsSection").style.display = "none";
+        document.getElementById("mirajRankingsSection").style.display = "block";
+        document.getElementById("benchXchangeSection").style.display = "none";
+        document.getElementById("seoOvTitle").innerText = "MIRAJ IT Rankings";
+      } else if (companyId === 'benchXchange') {
+        document.getElementById("godRankingsSection").style.display = "none";
+        document.getElementById("mirajRankingsSection").style.display = "none";
+        document.getElementById("benchXchangeSection").style.display = "block";
+        document.getElementById("seoOvTitle").innerText = "BenchXchange Rankings";
+      }
+      
+      // Scroll to top of overlay container
+      document.getElementById("seoOverlay").scrollTop = 0;
+    }
+
+    function handleSeoBack() {
+      if (currentSeoView === 'rankings') {
+        // Go back to company list
+        document.getElementById("seoCompanySelect").style.display = "block";
+        document.getElementById("seoRankingsDetails").style.display = "none";
+        document.getElementById("seoOvTitle").innerText = "SEO Rankings Portfolio";
+        currentSeoView = 'companies';
+        selectedSeoCompanyId = null;
+        document.getElementById("seoOverlay").scrollTop = 0;
+      } else {
+        // Close the entire overlay
+        closeOverlay('seoOverlay');
+      }
+    }
+
+    function selectCreativeCompany(companyId) {
+      currentCreativeView = 'details';
+      selectedCreativeCompanyId = companyId;
+      
+      // Hide company list, show creative details
+      document.getElementById("creativeCompanySelect").style.display = "none";
+      document.getElementById("creativeDetails").style.display = "block";
+      
+      // Toggle company sections
+      if (companyId === 'god') {
+        document.getElementById("creativeGodSection").style.display = "block";
+        document.getElementById("creativeExigoSection").style.display = "none";
+        document.getElementById("creativeOvTitle").innerText = "GeekOnDemand Creative Portfolio";
+      } else if (companyId === 'exigo') {
+        document.getElementById("creativeGodSection").style.display = "none";
+        document.getElementById("creativeExigoSection").style.display = "block";
+        document.getElementById("creativeOvTitle").innerText = "Exigo Campaign Portfolio";
+      }
+      
+      // Scroll to top of overlay container
+      document.getElementById("creativeOverlay").scrollTop = 0;
+    }
+
+    function handleCreativeBack() {
+      if (currentCreativeView === 'details') {
+        // Go back to company list
+        document.getElementById("creativeCompanySelect").style.display = "block";
+        document.getElementById("creativeDetails").style.display = "none";
+        document.getElementById("creativeOvTitle").innerText = "Creative Portfolio";
+        currentCreativeView = 'companies';
+        selectedCreativeCompanyId = null;
+        document.getElementById("creativeOverlay").scrollTop = 0;
+      } else {
+        // Close the entire overlay
+        closeOverlay('creativeOverlay');
+      }
+    }
+
     function openOverlay(id) {
       document.getElementById(id).classList.add("open");
       document.body.style.overflow = "hidden";
       document.getElementById(id).scrollTop = 0;
-      if (id === "seoOverlay" && !builtSEO) { buildSEO(); builtSEO = true; }
-      if (id === "creativeOverlay" && !builtCreative) { buildCreative(); builtCreative = true; }
+      if (id === "seoOverlay") {
+        // Reset to company list view
+        document.getElementById("seoCompanySelect").style.display = "block";
+        document.getElementById("seoRankingsDetails").style.display = "none";
+        document.getElementById("seoOvTitle").innerText = "SEO Rankings Portfolio";
+        currentSeoView = 'companies';
+        selectedSeoCompanyId = null;
+        
+        if (!builtSEO) { 
+          buildSEO(); 
+          builtSEO = true; 
+        }
+      }
+      if (id === "creativeOverlay") {
+        // Reset to company list view
+        document.getElementById("creativeCompanySelect").style.display = "block";
+        document.getElementById("creativeDetails").style.display = "none";
+        document.getElementById("creativeOvTitle").innerText = "Creative Portfolio";
+        currentCreativeView = 'companies';
+        selectedCreativeCompanyId = null;
+
+        if (!builtCreative) { 
+          buildCreative(); 
+          builtCreative = true; 
+        }
+      }
       if (id === "ugcOverlay" && !builtUGC) { buildUGC(); builtUGC = true; }
     }
     function closeOverlay(id) { document.getElementById(id).classList.remove("open"); document.body.style.overflow = ""; }
