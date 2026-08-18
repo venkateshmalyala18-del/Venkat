@@ -23,6 +23,8 @@
       --blue-light: #eff6ff;
       --purple: #7c3aed;
       --purple-light: #f5f3ff;
+      --green: #059669;
+      --green-light: #ecfdf5;
     }
 
     * {
@@ -1060,6 +1062,15 @@
       align-items: center;
       justify-content: center;
       transition: transform 0.3s ease;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .company-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 10px;
     }
 
     .company-card:hover .company-logo {
@@ -1224,8 +1235,11 @@
         <div class="skill-item">
           <div class="skill-dot"></div><span class="skill-name">Keyword Research &amp; Analysis</span>
         </div>
-        <div class="skill-item">
-          <div class="skill-dot"></div><span class="skill-name">RCS Campaign Management</span>
+        <div class="skill-item clickable" onclick="openOverlay('rcsOverlay')"
+          style="border:2px solid var(--green);background:var(--green-light);">
+          <div class="skill-dot" style="background:var(--green);"></div>
+          <span class="skill-name">RCS Campaign Management</span>
+          <span class="skill-badge" style="background:var(--green);">Reports &#8594;</span>
         </div>
         <div class="skill-item">
           <div class="skill-dot"></div><span class="skill-name">Blog Writing &amp; Content Creation</span>
@@ -1235,9 +1249,6 @@
         </div>
         <div class="skill-item">
           <div class="skill-dot"></div><span class="skill-name">Analytics &amp; Reporting</span>
-        </div>
-        <div class="skill-item">
-          <div class="skill-dot"></div><span class="skill-name">Canva Graphic Design</span>
         </div>
         <div class="skill-item">
           <div class="skill-dot"></div><span class="skill-name">Google Analytics / GA4</span>
@@ -1357,7 +1368,7 @@
             <span class="company-btn">View Rankings &rarr;</span>
           </div>
           <div class="company-card" onclick="selectSeoCompany('miraj')">
-            <div class="company-logo">🌍</div>
+            <div class="company-logo" style="background:#0f172a;border:1px solid #334155;"><img src="logos/miraj-logo.webp" alt="MIRAJ IT Consultancy Logo"></div>
             <h3 class="company-name">MIRAJ IT Consultancy</h3>
             <p class="company-desc">UAE &bull; Dubai-Based Digital Consultancy</p>
             <span class="company-btn">View Rankings &rarr;</span>
@@ -1366,6 +1377,12 @@
             <div class="company-logo">🤝</div>
             <h3 class="company-name">BenchXchange</h3>
             <p class="company-desc">India &bull; IT Bench Talent Marketplace &amp; Staffing Exchange</p>
+            <span class="company-btn">View Rankings &rarr;</span>
+          </div>
+          <div class="company-card" onclick="selectSeoCompany('exigo')">
+            <div class="company-logo" style="background:#fff;border:1px solid var(--border);"><img src="logos/Exigo.png" alt="Exigo Consulting Logo"></div>
+            <h3 class="company-name">Exigo Consulting</h3>
+            <p class="company-desc">India &bull; Business &amp; M&amp;A Advisory Services</p>
             <span class="company-btn">View Rankings &rarr;</span>
           </div>
         </div>
@@ -1399,6 +1416,15 @@
           </div>
           <div class="rank-grid" id="benchXchangeGrid"></div>
         </div>
+
+        <!-- Exigo Section -->
+        <div id="exigoRankingsSection" style="display: none;">
+          <div class="company-detail-header">
+            <h2 class="sub-section-title">Exigo Consulting &mdash; India</h2>
+            <div class="sub-section-sub">Keyword rankings achieved for M&amp;A and business advisory services</div>
+          </div>
+          <div class="rank-grid" id="exigoGrid"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1415,13 +1441,13 @@
         <h2 class="sub-section-title" style="text-align: center; margin-top: 1rem; margin-bottom: 2.5rem;">Select a Category / Brand</h2>
         <div class="company-grid">
           <div class="company-card" onclick="selectCreativeCompany('trinetra')">
-            <div class="company-logo">🎨</div>
+            <div class="company-logo" style="background:#fff;border:1px solid var(--border);"><img src="logos/trinetra connect.png" alt="Trinetra Designs Logo"></div>
             <h3 class="company-name">Trinetra Designs</h3>
-            <p class="company-desc">Brand & Social Media Design Posters &amp; Open Positions Banners</p>
+            <p class="company-desc">Brand &amp; Social Media Design Posters &amp; Open Positions Banners</p>
             <span class="company-btn">View Creatives &rarr;</span>
           </div>
           <div class="company-card" onclick="selectCreativeCompany('exigo')">
-            <div class="company-logo">👔</div>
+            <div class="company-logo" style="background:#fff;border:1px solid var(--border);"><img src="logos/Exigo.png" alt="Exigo Consulting Logo"></div>
             <h3 class="company-name">Exigo Consulting</h3>
             <p class="company-desc">Campaign posters &amp; promotional creatives for business consulting</p>
             <span class="company-btn">View Creatives &rarr;</span>
@@ -1493,6 +1519,19 @@
     </div>
   </div>
 
+  <!-- RCS OVERLAY -->
+  <div class="overlay" id="rcsOverlay">
+    <div class="ov-header">
+      <span class="ov-title">RCS Messaging &amp; Campaign Analytics</span>
+      <button class="back-btn" onclick="closeOverlay('rcsOverlay')">&#8592; Back</button>
+    </div>
+    <div class="ov-inner">
+      <div class="sub-section-title" style="margin-top:0;">Rich Communication Services (RCS) Reports</div>
+      <div class="sub-section-sub">Monthly campaign delivery, success rates, read receipts, and CTA performance reports</div>
+      <div class="poster-grid" id="rcsGrid"></div>
+    </div>
+  </div>
+
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox" onclick="closeLb()">
     <button class="lb-close" onclick="closeLb()">&#215;</button>
@@ -1521,7 +1560,14 @@
       { keyword: 'Laptop Services', rank: '22', img: 'seo/GEEKONDEMAND/laptop-22.png' },
       { keyword: 'Laptop Repair Hyderabad', rank: '35', img: 'seo/GEEKONDEMAND/laptop-35.png' },
       { keyword: 'On-Demand Tech Support', rank: '1', img: 'seo/GEEKONDEMAND/ondemand tech support 1.png' },
-      { keyword: 'Printer Services', rank: '25', img: 'seo/GEEKONDEMAND/printer services-25.png' }
+      { keyword: 'Printer Services', rank: '25', img: 'seo/GEEKONDEMAND/printer services-25.png' },
+      { keyword: 'Doorstep Router Repair Hyderabad', rank: '2', img: 'seo/GEEKONDEMAND/Doorstep router repair in hyderabad.jpeg' },
+      { keyword: 'Doorstep Router Setup & Repair', rank: 'AI Featured', img: 'seo/GEEKONDEMAND/Doorstep router setup and repair in hyderabad.jpeg' },
+      { keyword: 'Printer Repair vs Replacement (AI)', rank: 'AI Featured', img: 'seo/GEEKONDEMAND/Printer repair or replacement which is more cost effective -ai.jpeg' },
+      { keyword: 'Printer Repair vs Replacement', rank: '1', img: 'seo/GEEKONDEMAND/Printer repair or replacement which is more cost effective.jpeg' },
+      { keyword: 'Router Repair in Hyderabad', rank: '2', img: 'seo/GEEKONDEMAND/Router repair in hyderabad.jpeg' },
+      { keyword: 'Best Anti-Virus Installation Services', rank: 'GMB Top', img: 'seo/GEEKONDEMAND/best anti virus istallation services in hyderabad.jpeg' },
+      { keyword: 'Printer Repair or Replacement', rank: '3', img: 'seo/GEEKONDEMAND/printer repair or replacement.jpeg' }
     ];
     var mirajData = [
       { keyword: 'email marketing cost in dubai', rank: '1', img: 'seo/MIRAJ/Screenshot 2026-03-16 120838.png' },
@@ -1542,6 +1588,11 @@
       { keyword: 'staffing exchange platforms (AI Overview)', rank: 'AI Featured', img: 'seo/BXC/WhatsApp Image 2026-08-17 at 3.19.05 PM.jpeg' },
       { keyword: 'bench talent marketplace', rank: '2', img: 'seo/BXC/WhatsApp Image 2026-08-17 at 3.21.11 PM.jpeg' },
       { keyword: 'bench management platform', rank: '7', img: 'seo/BXC/WhatsApp Image 2026-08-17 at 3.23.07 PM.jpeg' }
+    ];
+    var exigoSeoData = [
+      { keyword: 'M&A and Fundraising Advisory', rank: '1', img: 'seo/EXIGO/ma fundrisin advisory.jpeg' },
+      { keyword: 'Signs It\'s Time for M&A Exit (AI)', rank: 'AI Featured', img: 'seo/EXIGO/signs its time for m&a exit -ai.jpeg' },
+      { keyword: 'Should You Sell? Signs It\'s Time for M&A Exit', rank: '1', img: 'seo/EXIGO/signs its time for m&a exit.jpeg' }
     ];
     var trinetraPosterData = [
       { label: 'Creative Design Poster 1', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.23 PM.jpeg' },
@@ -1585,8 +1636,15 @@
       { label: 'VMG Shoes', src: 'UGC/UGC-VIDEOS/VMG SHOES.mp4', localSrc: 'UGC/UGC-VIDEOS/VMG SHOES.mp4', tag: 'Full Ad' },
       { label: 'Molecular Sunscreen — Protect Your Glow', src: 'UGC/UGC-VIDEOS/Molecular Sunscreen Protect Your Glow Today (online-video-cutter.com).mp4', localSrc: 'UGC/UGC-VIDEOS/Molecular Sunscreen Protect Your Glow Today (online-video-cutter.com).mp4', tag: 'Full Ad' }
     ];
+    var rcsData = [
+      { label: 'RCS Delivery & Read Report — March 2026', img: 'RCS/WhatsApp Image 2026-08-18 at 3.04.04 PM.jpeg' },
+      { label: 'RCS Delivery & Read Report — April 2026', img: 'RCS/WhatsApp Image 2026-08-18 at 3.04.36 PM.jpeg' },
+      { label: 'RCS Delivery & Read Report — May 2026', img: 'RCS/WhatsApp Image 2026-08-18 at 3.05.08 PM.jpeg' },
+      { label: 'RCS Delivery & Read Report — June 2026', img: 'RCS/WhatsApp Image 2026-08-18 at 3.06.59 PM.jpeg' },
+      { label: 'RCS Delivery & Read Report — July 2026', img: 'RCS/WhatsApp Image 2026-08-18 at 3.07.25 PM.jpeg' }
+    ];
 
-    var builtSEO = false, builtCreative = false, builtUGC = false, carouselIdx = 0;
+    var builtSEO = false, builtCreative = false, builtUGC = false, builtRCS = false, carouselIdx = 0;
     var activeTabs = { creative: 'carousel' };
 
     var currentSeoView = 'companies'; // 'companies' or 'rankings'
@@ -1607,6 +1665,10 @@
       document.getElementById("godGrid").innerHTML = godData.map(function (d) { return '<div class="rank-card" onclick="openLb(this, event)"><img class="rank-img" src="' + d.img + '" alt="' + stripTags(d.keyword) + '" loading="lazy"><div class="rank-info"><div class="rank-keyword">' + d.keyword + '</div><span class="rank-pos ' + rankClass(d.rank) + '">' + rankLabel(d.rank) + '</span></div></div>'; }).join("");
       document.getElementById("mirajGrid").innerHTML = mirajData.map(function (d) { return '<div class="rank-card" onclick="openLb(this, event)"><img class="rank-img" src="' + d.img + '" alt="' + stripTags(d.keyword) + '" loading="lazy"><div class="rank-info"><div class="rank-keyword">' + d.keyword + '</div><span class="rank-pos ' + rankClass(d.rank) + '">' + rankLabel(d.rank) + '</span></div></div>'; }).join("");
       document.getElementById("benchXchangeGrid").innerHTML = benchXchangeData.map(function (d) { return '<div class="rank-card" onclick="openLb(this, event)"><img class="rank-img" src="' + d.img + '" alt="' + stripTags(d.keyword) + '" loading="lazy"><div class="rank-info"><div class="rank-keyword">' + d.keyword + '</div><span class="rank-pos ' + rankClass(d.rank) + '">' + rankLabel(d.rank) + '</span></div></div>'; }).join("");
+      var exigoGridEl = document.getElementById("exigoGrid");
+      if (exigoGridEl) {
+        exigoGridEl.innerHTML = exigoSeoData.map(function (d) { return '<div class="rank-card" onclick="openLb(this, event)"><img class="rank-img" src="' + d.img + '" alt="' + stripTags(d.keyword) + '" loading="lazy"><div class="rank-info"><div class="rank-keyword">' + d.keyword + '</div><span class="rank-pos ' + rankClass(d.rank) + '">' + rankLabel(d.rank) + '</span></div></div>'; }).join("");
+      }
     }
     function buildCreative() {
       var trinetraEl = document.getElementById("trinetraPosterGrid");
@@ -1637,6 +1699,14 @@
         return '<div class="ugc-card"><video controls preload="metadata" style="width:100%;display:block;height:320px;object-fit:cover;background:#111">' + sources + '</video><div class="ugc-info"><div class="ugc-label">' + v.label + '</div><span class="ugc-tag" ' + tagStyle + '>' + (v.tag || 'UGC') + '</span></div></div>';
       }).join("");
     }
+    function buildRCS() {
+      var rcsEl = document.getElementById("rcsGrid");
+      if (rcsEl) {
+        rcsEl.innerHTML = rcsData.map(function (p) {
+          return '<div class="poster-card" onclick="openLb(this, event)"><img class="poster-img" src="' + p.img + '" alt="' + stripTags(p.label) + '" loading="lazy" style="height:210px;object-fit:cover;object-position:top;"><div class="poster-label" style="font-weight:600;color:var(--green);">' + p.label + '</div></div>';
+        }).join("");
+      }
+    }
 
     function carouselMove(dir) { carouselGo((carouselIdx + dir + carouselData.length) % carouselData.length); }
     function carouselGo(n) { carouselIdx = n; document.getElementById("carouselTrack").style.transform = "translateX(-" + n + "00%)"; document.querySelectorAll(".carousel-dot").forEach(function (d, i) { d.classList.toggle("active", i === n); }); }
@@ -1654,17 +1724,26 @@
         document.getElementById("godRankingsSection").style.display = "block";
         document.getElementById("mirajRankingsSection").style.display = "none";
         document.getElementById("benchXchangeSection").style.display = "none";
+        var exSec = document.getElementById("exigoRankingsSection"); if (exSec) exSec.style.display = "none";
         document.getElementById("seoOvTitle").innerText = "GeekOnDemand Rankings";
       } else if (companyId === 'miraj') {
         document.getElementById("godRankingsSection").style.display = "none";
         document.getElementById("mirajRankingsSection").style.display = "block";
         document.getElementById("benchXchangeSection").style.display = "none";
+        var exSec = document.getElementById("exigoRankingsSection"); if (exSec) exSec.style.display = "none";
         document.getElementById("seoOvTitle").innerText = "MIRAJ IT Rankings";
       } else if (companyId === 'benchXchange') {
         document.getElementById("godRankingsSection").style.display = "none";
         document.getElementById("mirajRankingsSection").style.display = "none";
         document.getElementById("benchXchangeSection").style.display = "block";
+        var exSec = document.getElementById("exigoRankingsSection"); if (exSec) exSec.style.display = "none";
         document.getElementById("seoOvTitle").innerText = "BenchXchange Rankings";
+      } else if (companyId === 'exigo') {
+        document.getElementById("godRankingsSection").style.display = "none";
+        document.getElementById("mirajRankingsSection").style.display = "none";
+        document.getElementById("benchXchangeSection").style.display = "none";
+        var exSec = document.getElementById("exigoRankingsSection"); if (exSec) exSec.style.display = "block";
+        document.getElementById("seoOvTitle").innerText = "Exigo Consulting Rankings";
       }
       
       // Scroll to top of overlay container
@@ -1761,6 +1840,7 @@
         }
       }
       if (id === "ugcOverlay" && !builtUGC) { buildUGC(); builtUGC = true; }
+      if (id === "rcsOverlay" && !builtRCS) { buildRCS(); builtRCS = true; }
     }
     function closeOverlay(id) { document.getElementById(id).classList.remove("open"); document.body.style.overflow = ""; }
 
