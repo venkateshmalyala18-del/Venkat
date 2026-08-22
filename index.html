@@ -5,6 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Venkatesh Malyala — Digital Marketing Executive</title>
+  <meta name="description" content="Venkatesh Malyala — Digital Marketing Executive specializing in SEO Rankings, Meta Ads, UGC Content Creation, RCS Campaigns, and Creative Design.">
+  <meta property="og:title" content="Venkatesh Malyala — Digital Marketing Executive">
+  <meta property="og:description" content="Explore SEO rankings, Meta Ads campaigns, UGC video ads, and creative design portfolio.">
+  <meta property="og:image" content="meta/WhatsApp Image 2026-08-21 at 11.22.37 AM.jpeg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Venkatesh Malyala — Digital Marketing Executive">
+  <meta name="twitter:description" content="Explore SEO rankings, Meta Ads campaigns, UGC video ads, and creative design portfolio.">
+  <meta name="twitter:image" content="meta/WhatsApp Image 2026-08-21 at 11.22.37 AM.jpeg">
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap"
     rel="stylesheet">
@@ -572,27 +581,6 @@
       font-weight: 700;
     }
 
-    .back-btn {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--ink-soft);
-      cursor: pointer;
-      border: 1px solid var(--border);
-      background: none;
-      padding: 8px 18px;
-      border-radius: 4px;
-      transition: all .2s;
-    }
-
-    .back-btn:hover {
-      background: var(--accent);
-      color: #fff;
-      border-color: var(--accent);
-    }
-
     .ov-inner {
       max-width: 1100px;
       margin: 0 auto;
@@ -962,23 +950,47 @@
       align-items: center;
       justify-content: center;
       padding: 20px;
+      user-select: none;
     }
 
     .lightbox.open {
       display: flex;
     }
 
-    .lightbox img {
+    .lb-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       max-width: 90vw;
-      max-height: 88vh;
+      max-height: 90vh;
+      position: relative;
+    }
+
+    .lightbox img {
+      max-width: 88vw;
+      max-height: 82vh;
       border-radius: 8px;
       object-fit: contain;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .lb-caption {
+      margin-top: 10px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: center;
+      max-width: 800px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 6px 16px;
+      border-radius: 20px;
+      letter-spacing: .02em;
     }
 
     .lb-close {
       position: absolute;
-      top: 14px;
-      right: 20px;
+      top: 18px;
+      right: 24px;
       font-size: 38px;
       color: #fff;
       cursor: pointer;
@@ -986,10 +998,58 @@
       border: none;
       line-height: 1;
       opacity: .8;
+      transition: opacity .2s, transform .2s;
+      z-index: 510;
     }
 
     .lb-close:hover {
       opacity: 1;
+      transform: scale(1.15);
+    }
+
+    .lb-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #fff;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 510;
+      transition: all .2s ease;
+      line-height: 1;
+      padding-bottom: 4px;
+    }
+
+    .lb-btn:hover {
+      background: rgba(255, 255, 255, 0.35);
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .lb-prev {
+      left: 24px;
+    }
+
+    .lb-next {
+      right: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .lb-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 26px;
+      }
+      .lb-prev { left: 10px; }
+      .lb-next { right: 10px; }
     }
 
     footer {
@@ -1151,7 +1211,7 @@
 
   <nav>
     <div class="nav-container">
-      <div class="nav-logo">V<span>.</span>Malyala</div>
+      <div class="nav-logo">VGM<span>.</span></div>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -1217,6 +1277,12 @@
           <div class="skill-dot"></div><span class="skill-name">Search Engine Optimization</span>
           <span class="skill-badge" style="background:var(--accent);">Rankings &#8594;</span>
         </div>
+        <div class="skill-item clickable" onclick="openOverlay('metaOverlay')"
+          style="border:2px solid #0081fb;background:#eff6ff;">
+          <div class="skill-dot" style="background:#0081fb;"></div>
+          <span class="skill-name">Meta Ads (Facebook &amp; Instagram)</span>
+          <span class="skill-badge" style="background:#0081fb;">Campaigns &#8594;</span>
+        </div>
         <div class="skill-item clickable" onclick="openOverlay('creativeOverlay')"
           style="border:2px solid var(--blue);background:var(--blue-light);">
           <div class="skill-dot" style="background:var(--blue);"></div>
@@ -1243,9 +1309,6 @@
         </div>
         <div class="skill-item">
           <div class="skill-dot"></div><span class="skill-name">Blog Writing &amp; Content Creation</span>
-        </div>
-        <div class="skill-item">
-          <div class="skill-dot"></div><span class="skill-name">Meta Ads (Facebook &amp; Instagram)</span>
         </div>
         <div class="skill-item">
           <div class="skill-dot"></div><span class="skill-name">Analytics &amp; Reporting</span>
@@ -1354,7 +1417,6 @@
   <div class="overlay" id="seoOverlay">
     <div class="ov-header">
       <span class="ov-title" id="seoOvTitle">SEO Rankings Portfolio</span>
-      <button class="back-btn" id="seoBackBtn" onclick="handleSeoBack()">&#8592; Back</button>
     </div>
     <div class="ov-inner">
       <!-- Company Selection Screen -->
@@ -1362,7 +1424,7 @@
         <h2 class="sub-section-title" style="text-align: center; margin-top: 1rem; margin-bottom: 2.5rem;">Select a Company</h2>
         <div class="company-grid">
           <div class="company-card" onclick="selectSeoCompany('god')">
-            <div class="company-logo">🏢</div>
+            <div class="company-logo" style="background:#fff;border:1px solid var(--border);"><img src="logos/WhatsApp Image 2026-08-06 at 3.35.57 PM.jpeg" alt="GeekOnDemand Logo"></div>
             <h3 class="company-name">GeekOnDemand</h3>
             <p class="company-desc">Hyderabad, India &bull; On-Demand IT Services Platform</p>
             <span class="company-btn">View Rankings &rarr;</span>
@@ -1433,7 +1495,6 @@
   <div class="overlay" id="creativeOverlay">
     <div class="ov-header">
       <span class="ov-title" id="creativeOvTitle">Creative Portfolio</span>
-      <button class="back-btn" id="creativeBackBtn" onclick="handleCreativeBack()">&#8592; Back</button>
     </div>
     <div class="ov-inner">
       <!-- Company Selection Screen -->
@@ -1453,7 +1514,7 @@
             <span class="company-btn">View Creatives &rarr;</span>
           </div>
           <div class="company-card" onclick="selectCreativeCompany('god')">
-            <div class="company-logo">🏢</div>
+            <div class="company-logo" style="background:#fff;border:1px solid var(--border);"><img src="logos/WhatsApp Image 2026-08-06 at 3.35.57 PM.jpeg" alt="GeekOnDemand Logo"></div>
             <h3 class="company-name">GeekOnDemand</h3>
             <p class="company-desc">Hyderabad, India &bull; Service Carousels &amp; Video Explaners</p>
             <span class="company-btn">View Creatives &rarr;</span>
@@ -1509,7 +1570,6 @@
   <div class="overlay" id="ugcOverlay">
     <div class="ov-header">
       <span class="ov-title">UGC Content Creation</span>
-      <button class="back-btn" onclick="closeOverlay('ugcOverlay')">&#8592; Back</button>
     </div>
     <div class="ov-inner">
       <div class="sub-section-title" style="margin-top:0;">User-Generated Content (UGC) Ads</div>
@@ -1523,7 +1583,6 @@
   <div class="overlay" id="rcsOverlay">
     <div class="ov-header">
       <span class="ov-title">RCS Messaging &amp; Campaign Analytics</span>
-      <button class="back-btn" onclick="closeOverlay('rcsOverlay')">&#8592; Back</button>
     </div>
     <div class="ov-inner">
       <div class="sub-section-title" style="margin-top:0;">Rich Communication Services (RCS) Reports</div>
@@ -1532,10 +1591,27 @@
     </div>
   </div>
 
+  <!-- META ADS OVERLAY -->
+  <div class="overlay" id="metaOverlay">
+    <div class="ov-header">
+      <span class="ov-title">Meta Ads (Facebook &amp; Instagram) Analytics</span>
+    </div>
+    <div class="ov-inner">
+      <div class="sub-section-title" style="margin-top:0;">Meta Advertising Campaigns &amp; Performance</div>
+      <div class="sub-section-sub">Live campaign analytics, awareness reach, cost-per-result optimization, and lead generation reports from Meta Ads Manager</div>
+      <div class="poster-grid" id="metaGrid"></div>
+    </div>
+  </div>
+
   <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox" onclick="closeLb()">
-    <button class="lb-close" onclick="closeLb()">&#215;</button>
-    <img id="lbImg" src="" alt="">
+  <div class="lightbox" id="lightbox" onclick="closeLb(event)">
+    <button class="lb-close" onclick="closeLb(event)" title="Close (Esc)">&#215;</button>
+    <button class="lb-btn lb-prev" id="lbPrevBtn" onclick="lbNav(-1, event)" title="Previous (Left Arrow)">&#8249;</button>
+    <div class="lb-content" onclick="event.stopPropagation()">
+      <img id="lbImg" src="" alt="">
+      <div class="lb-caption" id="lbCaption"></div>
+    </div>
+    <button class="lb-btn lb-next" id="lbNextBtn" onclick="lbNav(1, event)" title="Next (Right Arrow)">&#8250;</button>
   </div>
 
   <script>
@@ -1643,8 +1719,20 @@
       { label: 'RCS Delivery & Read Report — June 2026', img: 'RCS/WhatsApp Image 2026-08-18 at 3.06.59 PM.jpeg' },
       { label: 'RCS Delivery & Read Report — July 2026', img: 'RCS/WhatsApp Image 2026-08-18 at 3.07.25 PM.jpeg' }
     ];
+    var metaData = [
+      { label: 'Meta Ads Manager — All Campaigns Performance & Overview', img: 'meta/WhatsApp Image 2026-08-21 at 11.22.37 AM.jpeg' },
+      { label: 'Laptop Awareness Campaign — Reach 63,316 | ₹2.07 CPR', img: 'meta/WhatsApp Image 2026-08-19 at 3.58.09 PM.jpeg' },
+      { label: 'Free IT Health Checkup — Reach 45,361 | ₹2.22 CPR', img: 'meta/WhatsApp Image 2026-08-19 at 12.56.03 PM.jpeg' },
+      { label: 'Geek Genie Ad Campaign — Reach 33,273 | ₹1.95 CPR', img: 'meta/WhatsApp Image 2026-08-19 at 3.58.08 PM.jpeg' },
+      { label: 'FTCCI Awareness Ad Set — Reach 20,459 | ₹2.05 CPR', img: 'meta/WhatsApp Image 2026-08-19 at 3.58.08 PM (1).jpeg' },
+      { label: 'Meta Lead Generation — 6 Leads | ₹84.50 / Lead', img: 'meta/WhatsApp Image 2026-08-19 at 12.56.21 PM.jpeg' },
+      { label: 'IT Health Checkup Ad Set Performance', img: 'meta/WhatsApp Image 2026-08-19 at 12.56.03 PM (1).jpeg' },
+      { label: 'Geek Genie Awareness Report', img: 'meta/htkfhjg.jpeg' },
+      { label: 'Laptop Awareness Reach Report', img: 'meta/ndh.jpeg' },
+      { label: 'FTCCI Campaign Analytics', img: 'meta/tfdg.jpeg' }
+    ];
 
-    var builtSEO = false, builtCreative = false, builtUGC = false, builtRCS = false, carouselIdx = 0;
+    var builtSEO = false, builtCreative = false, builtUGC = false, builtRCS = false, builtMeta = false, carouselIdx = 0;
     var activeTabs = { creative: 'carousel' };
 
     var currentSeoView = 'companies'; // 'companies' or 'rankings'
@@ -1708,10 +1796,31 @@
       }
     }
 
+    function buildMeta() {
+      var metaEl = document.getElementById("metaGrid");
+      if (metaEl) {
+        metaEl.innerHTML = metaData.map(function (p) {
+          return '<div class="poster-card" onclick="openLb(this, event)"><img class="poster-img" src="' + p.img + '" alt="' + stripTags(p.label) + '" loading="lazy" style="height:210px;object-fit:cover;object-position:top;"><div class="poster-label" style="font-weight:600;color:#0081fb;">' + p.label + '</div></div>';
+        }).join("");
+      }
+    }
+
     function carouselMove(dir) { carouselGo((carouselIdx + dir + carouselData.length) % carouselData.length); }
     function carouselGo(n) { carouselIdx = n; document.getElementById("carouselTrack").style.transform = "translateX(-" + n + "00%)"; document.querySelectorAll(".carousel-dot").forEach(function (d, i) { d.classList.toggle("active", i === n); }); }
 
-    function selectSeoCompany(companyId) {
+    function syncState(stateObj, hash) {
+      try {
+        if (window.history && window.history.pushState) {
+          window.history.pushState(stateObj, '', hash ? '#' + hash : window.location.pathname);
+        }
+      } catch (e) {
+        if (hash) {
+          window.location.hash = hash;
+        }
+      }
+    }
+
+    function selectSeoCompany(companyId, fromPopstate) {
       currentSeoView = 'rankings';
       selectedSeoCompanyId = companyId;
       
@@ -1720,52 +1829,47 @@
       document.getElementById("seoRankingsDetails").style.display = "block";
       
       // Toggle company sections
-      if (companyId === 'god') {
-        document.getElementById("godRankingsSection").style.display = "block";
-        document.getElementById("mirajRankingsSection").style.display = "none";
-        document.getElementById("benchXchangeSection").style.display = "none";
-        var exSec = document.getElementById("exigoRankingsSection"); if (exSec) exSec.style.display = "none";
-        document.getElementById("seoOvTitle").innerText = "GeekOnDemand Rankings";
-      } else if (companyId === 'miraj') {
-        document.getElementById("godRankingsSection").style.display = "none";
-        document.getElementById("mirajRankingsSection").style.display = "block";
-        document.getElementById("benchXchangeSection").style.display = "none";
-        var exSec = document.getElementById("exigoRankingsSection"); if (exSec) exSec.style.display = "none";
-        document.getElementById("seoOvTitle").innerText = "MIRAJ IT Rankings";
-      } else if (companyId === 'benchXchange') {
-        document.getElementById("godRankingsSection").style.display = "none";
-        document.getElementById("mirajRankingsSection").style.display = "none";
-        document.getElementById("benchXchangeSection").style.display = "block";
-        var exSec = document.getElementById("exigoRankingsSection"); if (exSec) exSec.style.display = "none";
-        document.getElementById("seoOvTitle").innerText = "BenchXchange Rankings";
-      } else if (companyId === 'exigo') {
-        document.getElementById("godRankingsSection").style.display = "none";
-        document.getElementById("mirajRankingsSection").style.display = "none";
-        document.getElementById("benchXchangeSection").style.display = "none";
-        var exSec = document.getElementById("exigoRankingsSection"); if (exSec) exSec.style.display = "block";
-        document.getElementById("seoOvTitle").innerText = "Exigo Consulting Rankings";
-      }
+      document.getElementById("godRankingsSection").style.display = companyId === 'god' ? "block" : "none";
+      document.getElementById("mirajRankingsSection").style.display = companyId === 'miraj' ? "block" : "none";
+      document.getElementById("benchXchangeSection").style.display = companyId === 'benchXchange' ? "block" : "none";
+      var exSec = document.getElementById("exigoRankingsSection");
+      if (exSec) exSec.style.display = companyId === 'exigo' ? "block" : "none";
+
+      if (companyId === 'god') document.getElementById("seoOvTitle").innerText = "GeekOnDemand Rankings";
+      else if (companyId === 'miraj') document.getElementById("seoOvTitle").innerText = "MIRAJ IT Rankings";
+      else if (companyId === 'benchXchange') document.getElementById("seoOvTitle").innerText = "BenchXchange Rankings";
+      else if (companyId === 'exigo') document.getElementById("seoOvTitle").innerText = "Exigo Consulting Rankings";
       
       // Scroll to top of overlay container
+      document.getElementById("seoOverlay").scrollTop = 0;
+
+      if (!fromPopstate) {
+        syncState({ overlay: 'seoOverlay', view: 'rankings', companyId: companyId }, 'seo-' + companyId);
+      }
+    }
+
+    function showSeoCompanySelect() {
+      document.getElementById("seoCompanySelect").style.display = "block";
+      document.getElementById("seoRankingsDetails").style.display = "none";
+      document.getElementById("seoOvTitle").innerText = "SEO Rankings Portfolio";
+      currentSeoView = 'companies';
+      selectedSeoCompanyId = null;
       document.getElementById("seoOverlay").scrollTop = 0;
     }
 
     function handleSeoBack() {
-      if (currentSeoView === 'rankings') {
-        // Go back to company list
-        document.getElementById("seoCompanySelect").style.display = "block";
-        document.getElementById("seoRankingsDetails").style.display = "none";
-        document.getElementById("seoOvTitle").innerText = "SEO Rankings Portfolio";
-        currentSeoView = 'companies';
-        selectedSeoCompanyId = null;
-        document.getElementById("seoOverlay").scrollTop = 0;
+      if (window.history.length > 1) {
+        window.history.back();
       } else {
-        // Close the entire overlay
-        closeOverlay('seoOverlay');
+        if (currentSeoView === 'rankings') {
+          showSeoCompanySelect();
+        } else {
+          closeOverlay('seoOverlay', true);
+        }
       }
     }
 
-    function selectCreativeCompany(companyId) {
+    function selectCreativeCompany(companyId, fromPopstate) {
       currentCreativeView = 'details';
       selectedCreativeCompanyId = companyId;
       
@@ -1792,48 +1896,51 @@
       
       // Scroll to top of overlay container
       document.getElementById("creativeOverlay").scrollTop = 0;
-    }
 
-    function handleCreativeBack() {
-      if (currentCreativeView === 'details') {
-        // Go back to company list
-        document.getElementById("creativeCompanySelect").style.display = "block";
-        document.getElementById("creativeDetails").style.display = "none";
-        document.getElementById("creativeOvTitle").innerText = "Creative Portfolio";
-        currentCreativeView = 'companies';
-        selectedCreativeCompanyId = null;
-        document.getElementById("creativeOverlay").scrollTop = 0;
-      } else {
-        // Close the entire overlay
-        closeOverlay('creativeOverlay');
+      if (!fromPopstate) {
+        syncState({ overlay: 'creativeOverlay', view: 'details', companyId: companyId }, 'creative-' + companyId);
       }
     }
 
-    function openOverlay(id) {
+    function showCreativeCompanySelect() {
+      document.getElementById("creativeCompanySelect").style.display = "block";
+      document.getElementById("creativeDetails").style.display = "none";
+      document.getElementById("creativeOvTitle").innerText = "Creative Portfolio";
+      currentCreativeView = 'companies';
+      selectedCreativeCompanyId = null;
+      document.getElementById("creativeOverlay").scrollTop = 0;
+    }
+
+    function handleCreativeBack() {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        if (currentCreativeView === 'details') {
+          showCreativeCompanySelect();
+        } else {
+          closeOverlay('creativeOverlay', true);
+        }
+      }
+    }
+
+    function openOverlay(id, fromPopstate) {
+      document.querySelectorAll('.overlay').forEach(function(o) {
+        if (o.id !== id) o.classList.remove('open');
+      });
+
       document.getElementById(id).classList.add("open");
       document.body.style.overflow = "hidden";
       document.getElementById(id).scrollTop = 0;
+
       if (id === "seoOverlay") {
-        // Reset to company list view
-        document.getElementById("seoCompanySelect").style.display = "block";
-        document.getElementById("seoRankingsDetails").style.display = "none";
-        document.getElementById("seoOvTitle").innerText = "SEO Rankings Portfolio";
-        currentSeoView = 'companies';
-        selectedSeoCompanyId = null;
-        
+        showSeoCompanySelect();
         if (!builtSEO) { 
           buildSEO(); 
           builtSEO = true; 
         }
       }
       if (id === "creativeOverlay") {
-        // Reset to company list view
-        document.getElementById("creativeCompanySelect").style.display = "block";
-        document.getElementById("creativeDetails").style.display = "none";
-        document.getElementById("creativeOvTitle").innerText = "Creative Portfolio";
-        currentCreativeView = 'companies';
-        selectedCreativeCompanyId = null;
-
+        showCreativeCompanySelect();
         if (!builtCreative) { 
           buildCreative(); 
           builtCreative = true; 
@@ -1841,8 +1948,83 @@
       }
       if (id === "ugcOverlay" && !builtUGC) { buildUGC(); builtUGC = true; }
       if (id === "rcsOverlay" && !builtRCS) { buildRCS(); builtRCS = true; }
+      if (id === "metaOverlay" && !builtMeta) { buildMeta(); builtMeta = true; }
+
+      if (!fromPopstate) {
+        syncState({ overlay: id, view: 'main' }, id);
+      }
     }
-    function closeOverlay(id) { document.getElementById(id).classList.remove("open"); document.body.style.overflow = ""; }
+
+    function closeOverlay(id, directClose) {
+      if (!directClose && window.history.length > 1) {
+        window.history.back();
+      } else {
+        var el = document.getElementById(id);
+        if (el) el.classList.remove("open");
+        var anyOpen = document.querySelector('.overlay.open');
+        if (!anyOpen) {
+          document.body.style.overflow = "";
+        }
+      }
+    }
+
+    // Listen to Browser Direction Symbols (Back / Forward arrows)
+    window.addEventListener('popstate', function (event) {
+      var lb = document.getElementById("lightbox");
+      if (lb && lb.classList.contains("open")) {
+        closeLb();
+        return;
+      }
+
+      var state = event.state;
+      var hash = window.location.hash.replace(/^#/, '');
+
+      if (!state && !hash) {
+        document.querySelectorAll('.overlay').forEach(function (o) {
+          o.classList.remove('open');
+        });
+        document.body.style.overflow = "";
+        return;
+      }
+
+      if (state && state.overlay) {
+        openOverlay(state.overlay, true);
+        if (state.overlay === 'seoOverlay') {
+          if (state.view === 'rankings' && state.companyId) {
+            selectSeoCompany(state.companyId, true);
+          } else {
+            showSeoCompanySelect();
+          }
+        } else if (state.overlay === 'creativeOverlay') {
+          if (state.view === 'details' && state.companyId) {
+            selectCreativeCompany(state.companyId, true);
+          } else {
+            showCreativeCompanySelect();
+          }
+        }
+      } else if (hash) {
+        if (hash.startsWith('seo-')) {
+          openOverlay('seoOverlay', true);
+          selectSeoCompany(hash.replace('seo-', ''), true);
+        } else if (hash.startsWith('creative-')) {
+          openOverlay('creativeOverlay', true);
+          selectCreativeCompany(hash.replace('creative-', ''), true);
+        } else if (['seoOverlay', 'creativeOverlay', 'ugcOverlay', 'rcsOverlay', 'metaOverlay'].includes(hash)) {
+          openOverlay(hash, true);
+        }
+      } else {
+        document.querySelectorAll('.overlay').forEach(function (o) {
+          o.classList.remove('open');
+        });
+        document.body.style.overflow = "";
+      }
+    });
+
+    try {
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState({ overlay: null }, '', window.location.pathname + window.location.search);
+      }
+    } catch(e) {}
 
     function switchTab(overlay, name) {
       var prefix = overlay + "-tab-";
@@ -1851,15 +2033,95 @@
       document.getElementById(prefix + name).classList.add("active");
     }
 
+    var lbImagesList = [];
+    var currentLbIdx = 0;
+
     function openLb(card, event) {
       if (event && event.target && event.target.tagName === 'A') return;
-      var img = card.querySelector("img");
-      if (img && img.src) {
-        document.getElementById("lbImg").src = img.src;
-        document.getElementById("lightbox").classList.add("open");
+      
+      var parent = card.parentElement;
+      var cards = parent ? Array.from(parent.children).filter(function (el) {
+        return el.classList.contains('rank-card') || el.classList.contains('poster-card');
+      }) : [card];
+
+      lbImagesList = [];
+      var clickedIdx = 0;
+
+      cards.forEach(function (c) {
+        var img = c.querySelector('img');
+        if (img && img.src) {
+          var labelEl = c.querySelector('.rank-keyword, .poster-label');
+          var labelText = labelEl ? labelEl.innerText.trim() : (img.alt || '');
+          lbImagesList.push({
+            src: img.src,
+            label: labelText
+          });
+          if (c === card) {
+            clickedIdx = lbImagesList.length - 1;
+          }
+        }
+      });
+
+      if (lbImagesList.length === 0) {
+        var singleImg = card.querySelector('img');
+        if (singleImg && singleImg.src) {
+          lbImagesList.push({ src: singleImg.src, label: singleImg.alt || '' });
+        }
+      }
+
+      currentLbIdx = clickedIdx;
+      updateLbView();
+      document.getElementById("lightbox").classList.add("open");
+    }
+
+    function updateLbView() {
+      if (lbImagesList.length === 0) return;
+      var item = lbImagesList[currentLbIdx];
+      document.getElementById("lbImg").src = item.src;
+      var capEl = document.getElementById("lbCaption");
+      if (capEl) {
+        if (item.label || lbImagesList.length > 1) {
+          capEl.style.display = "block";
+          var counter = lbImagesList.length > 1 ? ' (' + (currentLbIdx + 1) + '/' + lbImagesList.length + ')' : '';
+          capEl.innerText = item.label + counter;
+        } else {
+          capEl.style.display = "none";
+        }
+      }
+      var prevBtn = document.getElementById("lbPrevBtn");
+      var nextBtn = document.getElementById("lbNextBtn");
+      if (prevBtn && nextBtn) {
+        var showBtns = lbImagesList.length > 1 ? "flex" : "none";
+        prevBtn.style.display = showBtns;
+        nextBtn.style.display = showBtns;
       }
     }
-    function closeLb() { document.getElementById("lightbox").classList.remove("open"); }
+
+    function lbNav(dir, event) {
+      if (event) event.stopPropagation();
+      if (lbImagesList.length <= 1) return;
+      currentLbIdx = (currentLbIdx + dir + lbImagesList.length) % lbImagesList.length;
+      updateLbView();
+    }
+
+    function closeLb(event) {
+      if (event && event.target && event.target.closest && event.target.closest('.lb-content')) return;
+      document.getElementById("lightbox").classList.remove("open");
+    }
+
+    // Keyboard navigation
+    document.addEventListener("keydown", function (e) {
+      var lb = document.getElementById("lightbox");
+      if (lb && lb.classList.contains("open")) {
+        if (e.key === "ArrowLeft") {
+          lbNav(-1);
+        } else if (e.key === "ArrowRight") {
+          lbNav(1);
+        } else if (e.key === "Escape") {
+          closeLb();
+        }
+      }
+    });
   </script>
 </body>
 
