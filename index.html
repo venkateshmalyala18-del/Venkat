@@ -581,6 +581,70 @@
       font-weight: 700;
     }
 
+    .ov-close-btn {
+      background: rgba(0, 0, 0, 0.06);
+      border: 1px solid var(--border);
+      color: var(--ink);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 22px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .ov-close-btn:hover {
+      background: var(--ink);
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    .ov-nav-btn {
+      background: var(--white);
+      border: 1px solid var(--border);
+      color: var(--ink);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .ov-nav-btn:hover {
+      background: var(--paper-warm);
+      border-color: var(--ink-mute);
+    }
+
+    .back-to-companies-btn {
+      background: var(--white);
+      border: 1px solid var(--border);
+      color: var(--blue);
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      margin-bottom: 1.5rem;
+    }
+
+    .back-to-companies-btn:hover {
+      background: var(--blue);
+      color: #fff;
+      transform: translateX(-3px);
+    }
+
     .ov-inner {
       max-width: 1100px;
       margin: 0 auto;
@@ -1416,7 +1480,11 @@
   <!-- SEO OVERLAY -->
   <div class="overlay" id="seoOverlay">
     <div class="ov-header">
-      <span class="ov-title" id="seoOvTitle">SEO Rankings Portfolio</span>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <button class="ov-nav-btn" onclick="handleSeoBack()" title="Go Back">&#8592; Back</button>
+        <span class="ov-title" id="seoOvTitle">SEO Rankings Portfolio</span>
+      </div>
+      <button class="ov-close-btn" onclick="closeOverlay('seoOverlay', true)" title="Close (Esc)">&times;</button>
     </div>
     <div class="ov-inner">
       <!-- Company Selection Screen -->
@@ -1454,6 +1522,7 @@
       <div id="seoRankingsDetails" style="display: none;">
         <!-- GeekOnDemand Section -->
         <div id="godRankingsSection" style="display: none;">
+          <button class="back-to-companies-btn" onclick="showSeoCompanySelect()">&larr; Back to Companies</button>
           <div class="company-detail-header">
             <h2 class="sub-section-title">GeekOnDemand &mdash; Hyderabad</h2>
             <div class="sub-section-sub">Keyword rankings achieved for an on-demand IT services platform</div>
@@ -1463,6 +1532,7 @@
 
         <!-- Miraj Section -->
         <div id="mirajRankingsSection" style="display: none;">
+          <button class="back-to-companies-btn" onclick="showSeoCompanySelect()">&larr; Back to Companies</button>
           <div class="company-detail-header">
             <h2 class="sub-section-title">MIRAJ IT Consultancy &mdash; UAE</h2>
             <div class="sub-section-sub">Keyword rankings achieved for a Dubai-based digital consultancy</div>
@@ -1472,6 +1542,7 @@
 
         <!-- BenchXchange Section -->
         <div id="benchXchangeSection" style="display: none;">
+          <button class="back-to-companies-btn" onclick="showSeoCompanySelect()">&larr; Back to Companies</button>
           <div class="company-detail-header">
             <h2 class="sub-section-title">BenchXchange &mdash; India</h2>
             <div class="sub-section-sub">Keyword rankings achieved for a B2B talent marketplace &amp; staffing exchange</div>
@@ -1481,6 +1552,7 @@
 
         <!-- Exigo Section -->
         <div id="exigoRankingsSection" style="display: none;">
+          <button class="back-to-companies-btn" onclick="showSeoCompanySelect()">&larr; Back to Companies</button>
           <div class="company-detail-header">
             <h2 class="sub-section-title">Exigo Consulting &mdash; India</h2>
             <div class="sub-section-sub">Keyword rankings achieved for M&amp;A and business advisory services</div>
@@ -1494,29 +1566,33 @@
   <!-- CREATIVE OVERLAY -->
   <div class="overlay" id="creativeOverlay">
     <div class="ov-header">
-      <span class="ov-title" id="creativeOvTitle">Creative Portfolio</span>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <button class="ov-nav-btn" onclick="handleCreativeBack()" title="Go Back">&#8592; Back</button>
+        <span class="ov-title" id="creativeOvTitle">Creative Portfolio</span>
+      </div>
+      <button class="ov-close-btn" onclick="closeOverlay('creativeOverlay', true)" title="Close (Esc)">&times;</button>
     </div>
     <div class="ov-inner">
       <!-- Company Selection Screen -->
       <div id="creativeCompanySelect">
         <h2 class="sub-section-title" style="text-align: center; margin-top: 1rem; margin-bottom: 2.5rem;">Select a Category / Brand</h2>
         <div class="company-grid">
+          <div class="company-card" onclick="selectCreativeCompany('god')">
+            <div class="company-logo" style="background:#fff;border:1px solid var(--border);"><img src="logos/WhatsApp Image 2026-08-06 at 3.35.57 PM.jpeg" alt="GeekOnDemand Logo"></div>
+            <h3 class="company-name">GeekOnDemand</h3>
+            <p class="company-desc">Hyderabad, India &bull; Service Carousels &amp; Video Explaners</p>
+            <span class="company-btn">View Creatives &rarr;</span>
+          </div>
           <div class="company-card" onclick="selectCreativeCompany('trinetra')">
             <div class="company-logo" style="background:#fff;border:1px solid var(--border);"><img src="logos/trinetra connect.png" alt="Trinetra Designs Logo"></div>
             <h3 class="company-name">Trinetra Designs</h3>
-            <p class="company-desc">Brand &amp; Social Media Design Posters &amp; Open Positions Banners</p>
+            <p class="company-desc">Brand &amp; Social Media Design Posters, Open Positions &amp; Promo Videos</p>
             <span class="company-btn">View Creatives &rarr;</span>
           </div>
           <div class="company-card" onclick="selectCreativeCompany('exigo')">
             <div class="company-logo" style="background:#fff;border:1px solid var(--border);"><img src="logos/Exigo.png" alt="Exigo Consulting Logo"></div>
             <h3 class="company-name">Exigo Consulting</h3>
             <p class="company-desc">Campaign posters &amp; promotional creatives for business consulting</p>
-            <span class="company-btn">View Creatives &rarr;</span>
-          </div>
-          <div class="company-card" onclick="selectCreativeCompany('god')">
-            <div class="company-logo" style="background:#fff;border:1px solid var(--border);"><img src="logos/WhatsApp Image 2026-08-06 at 3.35.57 PM.jpeg" alt="GeekOnDemand Logo"></div>
-            <h3 class="company-name">GeekOnDemand</h3>
-            <p class="company-desc">Hyderabad, India &bull; Service Carousels &amp; Video Explaners</p>
             <span class="company-btn">View Creatives &rarr;</span>
           </div>
         </div>
@@ -1526,39 +1602,57 @@
       <div id="creativeDetails" style="display: none;">
         <!-- Trinetra Section -->
         <div id="creativeTrinetraSection" style="display: none;">
-          <div class="sub-section-title">Trinetra &mdash; Brand &amp; Social Media Posters</div>
-          <div class="sub-section-sub">Creative design posters and promotional graphics</div>
-          <div class="poster-grid" id="trinetraPosterGrid"></div>
+          <button class="back-to-companies-btn" onclick="showCreativeCompanySelect()">&larr; Back to Brands</button>
+          <div class="company-detail-header">
+            <h2 class="sub-section-title">Trinetra &mdash; Brand &amp; Social Media Creatives</h2>
+            <div class="sub-section-sub">Creative design posters, open positions banners and promotional videos</div>
+          </div>
+          
+          <div class="ov-tabs" id="trinetraTabs">
+            <button class="ov-tab active" onclick="switchTrinetraTab('posters')">&#128247; Brand Posters</button>
+            <button class="ov-tab" onclick="switchTrinetraTab('videos')">&#127916; Videos &amp; Reels</button>
+          </div>
+
+          <div class="ov-tab-content active" id="trinetra-tab-posters">
+            <div class="sub-section-title" style="font-size: 16px; margin: 0 0 0.8rem;">Brand &amp; Social Media Posters</div>
+            <div class="poster-grid" id="trinetraPosterGrid"></div>
+          </div>
+
+          <div class="ov-tab-content" id="trinetra-tab-videos">
+            <div class="sub-section-title" style="font-size: 16px; margin: 0 0 0.8rem;">Brand Promo Videos</div>
+            <div class="video-grid" id="trinetraVideoGrid"></div>
+          </div>
         </div>
 
         <!-- Exigo Section -->
         <div id="creativeExigoSection" style="display: none;">
-          <div class="sub-section-title">Exigo &amp; Campaign Posters</div>
-          <div class="sub-section-sub">Designs for Exigo Consulting and brand campaigns</div>
+          <button class="back-to-companies-btn" onclick="showCreativeCompanySelect()">&larr; Back to Brands</button>
+          <div class="company-detail-header">
+            <h2 class="sub-section-title">Exigo &amp; Campaign Posters</h2>
+            <div class="sub-section-sub">Designs for Exigo Consulting and brand campaigns</div>
+          </div>
           <div class="poster-grid" id="exigoPosterGrid"></div>
         </div>
 
         <!-- GeekOnDemand Section -->
         <div id="creativeGodSection" style="display: none;">
-          <div class="ov-tabs">
-            <button class="ov-tab active" onclick="switchTab('creative','carousel')">&#128247; Router Carousel</button>
-            <button class="ov-tab" onclick="switchTab('creative','videos')">&#127916; Videos &amp; Reels</button>
+          <button class="back-to-companies-btn" onclick="showCreativeCompanySelect()">&larr; Back to Brands</button>
+          <div class="company-detail-header">
+            <h2 class="sub-section-title">GeekOnDemand &mdash; Brand Posters &amp; Explainer Videos</h2>
+            <div class="sub-section-sub">Creative marketing posters, promotional designs, social reels and service videos</div>
+          </div>
+          <div class="ov-tabs" id="godTabs">
+            <button class="ov-tab active" onclick="switchGodTab('posters')">&#128247; Brand Posters</button>
+            <button class="ov-tab" onclick="switchGodTab('videos')">&#127916; Videos &amp; Reels</button>
           </div>
           
-          <div class="ov-tab-content active" id="creative-tab-carousel">
-            <div class="sub-section-title">Router Replacement &mdash; Carousel Post</div>
-            <div class="sub-section-sub">5 Signs Your Router Needs Replacement &mdash; Instagram/LinkedIn carousel</div>
-            <div class="carousel" id="mainCarousel">
-              <div class="carousel-track" id="carouselTrack"></div>
-              <button class="carousel-btn carousel-prev" onclick="carouselMove(-1)">&#8249;</button>
-              <button class="carousel-btn carousel-next" onclick="carouselMove(1)">&#8250;</button>
-              <div class="carousel-dots" id="carouselDots"></div>
-            </div>
+          <div class="ov-tab-content active" id="god-tab-posters">
+            <div class="sub-section-title" style="font-size: 16px; margin: 0 0 0.8rem;">Brand &amp; Promotional Posters</div>
+            <div class="poster-grid" id="godPosterGrid"></div>
           </div>
           
-          <div class="ov-tab-content" id="creative-tab-videos">
-            <div class="sub-section-title">Service Videos &amp; Reels</div>
-            <div class="sub-section-sub">Social media reels and explainer videos for GeekOnDemand</div>
+          <div class="ov-tab-content" id="god-tab-videos">
+            <div class="sub-section-title" style="font-size: 16px; margin: 0 0 0.8rem;">Service Videos &amp; Reels</div>
             <div class="video-grid" id="videoGrid"></div>
           </div>
         </div>
@@ -1570,6 +1664,7 @@
   <div class="overlay" id="ugcOverlay">
     <div class="ov-header">
       <span class="ov-title">UGC Content Creation</span>
+      <button class="ov-close-btn" onclick="closeOverlay('ugcOverlay', true)" title="Close (Esc)">&times;</button>
     </div>
     <div class="ov-inner">
       <div class="sub-section-title" style="margin-top:0;">User-Generated Content (UGC) Ads</div>
@@ -1583,6 +1678,7 @@
   <div class="overlay" id="rcsOverlay">
     <div class="ov-header">
       <span class="ov-title">RCS Messaging &amp; Campaign Analytics</span>
+      <button class="ov-close-btn" onclick="closeOverlay('rcsOverlay', true)" title="Close (Esc)">&times;</button>
     </div>
     <div class="ov-inner">
       <div class="sub-section-title" style="margin-top:0;">Rich Communication Services (RCS) Reports</div>
@@ -1595,6 +1691,7 @@
   <div class="overlay" id="metaOverlay">
     <div class="ov-header">
       <span class="ov-title">Meta Ads (Facebook &amp; Instagram) Analytics</span>
+      <button class="ov-close-btn" onclick="closeOverlay('metaOverlay', true)" title="Close (Esc)">&times;</button>
     </div>
     <div class="ov-inner">
       <div class="sub-section-title" style="margin-top:0;">Meta Advertising Campaigns &amp; Performance</div>
@@ -1670,6 +1767,9 @@
       { keyword: 'Signs It\'s Time for M&A Exit (AI)', rank: 'AI Featured', img: 'seo/EXIGO/signs its time for m&a exit -ai.jpeg' },
       { keyword: 'Should You Sell? Signs It\'s Time for M&A Exit', rank: '1', img: 'seo/EXIGO/signs its time for m&a exit.jpeg' }
     ];
+    var trinetraVideoData = [
+      { label: 'Trinetra Brand Promo Ad', src: 'Content & creative Designs/Trinetra/WhatsApp Video 2026-08-24 at 5.13.54 PM (2).mp4' }
+    ];
     var trinetraPosterData = [
       { label: 'Creative Design Poster 1', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.23 PM.jpeg' },
       { label: 'Creative Design Poster 2', img: 'Content & creative Designs/Trinetra/WhatsApp Image 2026-08-01 at 8.08.24 PM.jpeg' },
@@ -1701,8 +1801,38 @@
       { label: 'Exigo Poster 2', img: 'Content & creative Designs/EXIGO/WhatsApp Image 2026-08-01 at 9.25.52 PM.jpeg' },
       { label: 'Exigo Poster 3', img: 'Content & creative Designs/EXIGO/WhatsApp Image 2026-08-01 at 9.25.53 PM.jpeg' }
     ];
+    var godPosterData = [
+      { label: 'IT Support — Doorstep Tech Help', img: 'Content & creative Designs/Geekondemand/POSTERS/GOD/Ab it support.png' },
+      { label: 'Book Your Service Online', img: 'Content & creative Designs/Geekondemand/POSTERS/GOD/book it.png' },
+      { label: 'Full Stop to Tech Troubles', img: 'Content & creative Designs/Geekondemand/POSTERS/GOD/full stop.png' },
+      { label: 'Independence Day Campaign 1', img: 'Content & creative Designs/Geekondemand/POSTERS/GOD/Independence (1).png' },
+      { label: 'Independence Day Campaign 2', img: 'Content & creative Designs/Geekondemand/POSTERS/GOD/Independence (3).png' },
+      { label: 'Independence Day Campaign 3', img: 'Content & creative Designs/Geekondemand/POSTERS/GOD/Independence (8).png' },
+      { label: 'Just GeekIt Service Banner', img: 'Content & creative Designs/Geekondemand/POSTERS/GOD/just geekit.png' },
+      { label: 'Monthly, Quarterly & Annual Plans', img: 'Content & creative Designs/Geekondemand/POSTERS/GOD/Monthly  Quarterly  Annual.png' },
+      { label: 'Printer Se Yaari — Quick Setup', img: 'Content & creative Designs/Geekondemand/POSTERS/GOD/Printer Se yaari.png' },
+      { label: 'Tech Bodyguards — Security Support', img: 'Content & creative Designs/Geekondemand/POSTERS/GOD/Tech Bodyguards.png' },
+      { label: 'WiFi Gone? Quick Router Fix', img: 'Content & creative Designs/Geekondemand/POSTERS/GOD/wifi gone.png' },
+      { label: 'WiFi Speed Leda? High Speed Setup', img: 'Content & creative Designs/Geekondemand/POSTERS/GOD/wifi speed leda.png' },
+      { label: 'You Focus On Business, We Handle IT', img: 'Content & creative Designs/Geekondemand/POSTERS/GOD/you foucus.png' },
+      { label: 'Zoom Pe Tha — Video Call Fix', img: 'Content & creative Designs/Geekondemand/POSTERS/GOD/Zoom pe tha (11).png' }
+    ];
     var carouselData = [];
-    var videoData = [];
+    var videoData = [
+      { label: 'GeekOnDemand Video Ad 1', src: 'Content & creative Designs/Geekondemand/WhatsApp Video 2026-08-24 at 5.07.49 PM.mp4' },
+      { label: 'GeekOnDemand Video Ad 2', src: 'Content & creative Designs/Geekondemand/WhatsApp Video 2026-08-24 at 5.07.49 PM (1).mp4' },
+      { label: 'GeekOnDemand Video Ad 3', src: 'Content & creative Designs/Geekondemand/WhatsApp Video 2026-08-24 at 5.07.49 PM (2).mp4' },
+      { label: 'GeekOnDemand Reel 1', src: 'Content & creative Designs/Geekondemand/WhatsApp Video 2026-08-24 at 5.09.15 PM.mp4' },
+      { label: 'GeekOnDemand Reel 2', src: 'Content & creative Designs/Geekondemand/WhatsApp Video 2026-08-24 at 5.09.15 PM (1).mp4' },
+      { label: 'GeekOnDemand Explainer 1', src: 'Content & creative Designs/Geekondemand/WhatsApp Video 2026-08-24 at 5.13.09 PM.mp4' },
+      { label: 'GeekOnDemand Explainer 2', src: 'Content & creative Designs/Geekondemand/WhatsApp Video 2026-08-24 at 5.13.09 PM (1).mp4' },
+      { label: 'GeekOnDemand Promo 1', src: 'Content & creative Designs/Geekondemand/WhatsApp Video 2026-08-24 at 5.13.54 PM.mp4' },
+      { label: 'GeekOnDemand Promo 2', src: 'Content & creative Designs/Geekondemand/WhatsApp Video 2026-08-24 at 5.13.54 PM (1).mp4' },
+      { label: 'GeekOnDemand Promo 4', src: 'Content & creative Designs/Geekondemand/WhatsApp Video 2026-08-24 at 5.13.54 PM (3).mp4' },
+      { label: 'GeekOnDemand Promo 5', src: 'Content & creative Designs/Geekondemand/WhatsApp Video 2026-08-24 at 5.13.54 PM (4).mp4' },
+      { label: 'GeekOnDemand Promo 6', src: 'Content & creative Designs/Geekondemand/WhatsApp Video 2026-08-24 at 5.13.54 PM (5).mp4' },
+      { label: 'GeekOnDemand Promo 7', src: 'Content & creative Designs/Geekondemand/WhatsApp Video 2026-08-24 at 5.13.54 PM (6).mp4' }
+    ];
     var ugcData = [
       { label: 'Akshitha Developers UGC Ad', src: 'UGC/UGC-VIDEOS/Akshitha develoepers.mp4', localSrc: 'UGC/UGC-VIDEOS/Akshitha develoepers.mp4', tag: 'Full Ad' },
       { label: 'Akshitha Developers — Ad 2', src: 'UGC/UGC-VIDEOS/Akshitha developers-1.mp4', localSrc: 'UGC/UGC-VIDEOS/Akshitha developers-1.mp4', tag: 'Full Ad' },
@@ -1759,6 +1889,12 @@
       }
     }
     function buildCreative() {
+      var trinetraVideoEl = document.getElementById("trinetraVideoGrid");
+      if (trinetraVideoEl) {
+        trinetraVideoEl.innerHTML = trinetraVideoData.map(function (v) {
+          return '<div class="video-card"><video controls preload="metadata" style="width:100%;display:block;max-height:220px;background:#111"><source src="' + v.src + '" type="video/mp4"></video><div class="video-info"><div class="video-label">' + v.label + '</div><div class="video-brand">Trinetra Designs</div></div></div>';
+        }).join("");
+      }
       var trinetraEl = document.getElementById("trinetraPosterGrid");
       if (trinetraEl) {
         trinetraEl.innerHTML = trinetraPosterData.map(function (p) { return '<div class="poster-card" onclick="openLb(this, event)"><img class="poster-img" src="' + p.img + '" alt="' + stripTags(p.label) + '" loading="lazy"><div class="poster-label">' + p.label + '</div></div>'; }).join("");
@@ -1766,6 +1902,10 @@
       var exigoEl = document.getElementById("exigoPosterGrid");
       if (exigoEl) {
         exigoEl.innerHTML = exigoPosterData.map(function (p) { return '<div class="poster-card" onclick="openLb(this, event)"><img class="poster-img" src="' + p.img + '" alt="' + stripTags(p.label) + '" loading="lazy"><div class="poster-label">' + p.label + '</div></div>'; }).join("");
+      }
+      var godPosterEl = document.getElementById("godPosterGrid");
+      if (godPosterEl) {
+        godPosterEl.innerHTML = godPosterData.map(function (p) { return '<div class="poster-card" onclick="openLb(this, event)"><img class="poster-img" src="' + p.img + '" alt="' + stripTags(p.label) + '" loading="lazy"><div class="poster-label">' + p.label + '</div></div>'; }).join("");
       }
       var track = document.getElementById("carouselTrack");
       var dots = document.getElementById("carouselDots");
@@ -1851,21 +1991,27 @@
     function showSeoCompanySelect() {
       document.getElementById("seoCompanySelect").style.display = "block";
       document.getElementById("seoRankingsDetails").style.display = "none";
+      var godSec = document.getElementById("godRankingsSection");
+      var mirajSec = document.getElementById("mirajRankingsSection");
+      var bxcSec = document.getElementById("benchXchangeSection");
+      var exSec = document.getElementById("exigoRankingsSection");
+      if (godSec) godSec.style.display = "none";
+      if (mirajSec) mirajSec.style.display = "none";
+      if (bxcSec) bxcSec.style.display = "none";
+      if (exSec) exSec.style.display = "none";
+
       document.getElementById("seoOvTitle").innerText = "SEO Rankings Portfolio";
       currentSeoView = 'companies';
       selectedSeoCompanyId = null;
       document.getElementById("seoOverlay").scrollTop = 0;
+      syncState({ overlay: 'seoOverlay', view: 'companies' }, 'seoOverlay');
     }
 
     function handleSeoBack() {
-      if (window.history.length > 1) {
-        window.history.back();
+      if (currentSeoView === 'rankings') {
+        showSeoCompanySelect();
       } else {
-        if (currentSeoView === 'rankings') {
-          showSeoCompanySelect();
-        } else {
-          closeOverlay('seoOverlay', true);
-        }
+        closeOverlay('seoOverlay', true);
       }
     }
 
@@ -1888,10 +2034,12 @@
 
       if (companyId === 'trinetra') {
         document.getElementById("creativeOvTitle").innerText = "Trinetra Creative Portfolio";
+        switchTrinetraTab('posters');
       } else if (companyId === 'exigo') {
         document.getElementById("creativeOvTitle").innerText = "Exigo Campaign Portfolio";
       } else if (companyId === 'god') {
         document.getElementById("creativeOvTitle").innerText = "GeekOnDemand Creative Portfolio";
+        switchGodTab('posters');
       }
       
       // Scroll to top of overlay container
@@ -1905,21 +2053,25 @@
     function showCreativeCompanySelect() {
       document.getElementById("creativeCompanySelect").style.display = "block";
       document.getElementById("creativeDetails").style.display = "none";
+      var trinetraSec = document.getElementById("creativeTrinetraSection");
+      var exigoSec = document.getElementById("creativeExigoSection");
+      var godSec = document.getElementById("creativeGodSection");
+      if (trinetraSec) trinetraSec.style.display = "none";
+      if (exigoSec) exigoSec.style.display = "none";
+      if (godSec) godSec.style.display = "none";
+
       document.getElementById("creativeOvTitle").innerText = "Creative Portfolio";
       currentCreativeView = 'companies';
       selectedCreativeCompanyId = null;
       document.getElementById("creativeOverlay").scrollTop = 0;
+      syncState({ overlay: 'creativeOverlay', view: 'companies' }, 'creativeOverlay');
     }
 
     function handleCreativeBack() {
-      if (window.history.length > 1) {
-        window.history.back();
+      if (currentCreativeView === 'details') {
+        showCreativeCompanySelect();
       } else {
-        if (currentCreativeView === 'details') {
-          showCreativeCompanySelect();
-        } else {
-          closeOverlay('creativeOverlay', true);
-        }
+        closeOverlay('creativeOverlay', true);
       }
     }
 
@@ -2026,11 +2178,26 @@
       }
     } catch(e) {}
 
-    function switchTab(overlay, name) {
-      var prefix = overlay + "-tab-";
-      document.querySelectorAll("#" + overlay + "Overlay .ov-tab").forEach(function (t, i) { t.classList.toggle("active", ["posters", "carousel", "videos"][i] === name); });
-      document.querySelectorAll("#" + overlay + "Overlay .ov-tab-content").forEach(function (c) { c.classList.remove("active"); });
-      document.getElementById(prefix + name).classList.add("active");
+    function switchTrinetraTab(name) {
+      document.querySelectorAll("#trinetraTabs .ov-tab").forEach(function (t) {
+        var isTarget = (name === 'posters' && t.textContent.includes('Posters')) ||
+                       (name === 'videos' && t.textContent.includes('Videos'));
+        t.classList.toggle("active", isTarget);
+      });
+      document.querySelectorAll("#creativeTrinetraSection .ov-tab-content").forEach(function (c) {
+        c.classList.toggle("active", c.id === "trinetra-tab-" + name);
+      });
+    }
+
+    function switchGodTab(name) {
+      document.querySelectorAll("#godTabs .ov-tab").forEach(function (t) {
+        var isTarget = (name === 'carousel' && t.textContent.includes('Carousel')) ||
+                       (name === 'videos' && t.textContent.includes('Videos'));
+        t.classList.toggle("active", isTarget);
+      });
+      document.querySelectorAll("#creativeGodSection .ov-tab-content").forEach(function (c) {
+        c.classList.toggle("active", c.id === "god-tab-" + name);
+      });
     }
 
     var lbImagesList = [];
