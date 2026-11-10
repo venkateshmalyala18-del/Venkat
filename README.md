@@ -7,30 +7,41 @@ A structured portfolio and work archive covering SEO, content & creative design,
 ```text
 Venkat/
 ├── README.md
-├── portfolio/
-│   ├── index.html
-│   └── reviews.html
-├── docs/
-│   └── implementation_plan.md
+├── index.html
+├── reviews.html
+├── implementation_plan.md
+├── Rankings/
+│   ├── BXC/
+│   ├── EXIGO/
+│   └── GOD/
 ├── seo/
 │   ├── BXC/
+│   ├── EXIGO/
 │   ├── GEEKONDEMAND/
 │   └── MIRAJ/
-├── creative-designs/
+├── Content & creative Designs/
 │   ├── EXIGO/
+│   ├── Geekondemand/
 │   └── Trinetra/
-├── ugc/
-│   └── videos/
+├── UGC/
+│   └── UGC-VIDEOS/
+├── RCS/
+├── meta/
+├── logos/
 └── .vscode/
 ```
 
 ## Work Areas
 
-### SEO
-SEO ranking and campaign assets for BXC, GeekOnDemand, and Miraj IT Consultancy.
+### Rankings & SEO
+Verified Google Search keyword rankings organized by client:
+- **GOD (GeekOnDemand)**: IT support, hardware repair, router, and antivirus services.
+- **EXIGO**: M&A advisory, platform, earnout, and deal structuring services.
+- **BXC (BenchXchange)**: B2B bench talent marketplace and staffing exchange.
+- **MIRAJ**: UAE & Dubai digital consultancy keyword rankings.
 
 ### Content & Creative Designs
-Creative assets organized by client/project, including EXIGO and Trinetra.
+Creative assets organized by client/project, including EXIGO, GeekOnDemand, and Trinetra.
 
 ### UGC / Video
 UGC advertising and real-estate/video portfolio examples.
