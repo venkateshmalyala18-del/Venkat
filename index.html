@@ -1497,6 +1497,12 @@
             <p class="company-desc">Hyderabad, India &bull; On-Demand IT Services Platform</p>
             <span class="company-btn">View Rankings &rarr;</span>
           </div>
+          <div class="company-card" onclick="selectSeoCompany('exigo')">
+            <div class="company-logo" style="background:#fff;border:1px solid var(--border);"><img src="logos/Exigo.png" alt="Exigo Consulting Logo"></div>
+            <h3 class="company-name">Exigo Consulting</h3>
+            <p class="company-desc">India &bull; Business &amp; M&amp;A Advisory Services</p>
+            <span class="company-btn">View Rankings &rarr;</span>
+          </div>
           <div class="company-card" onclick="selectSeoCompany('miraj')">
             <div class="company-logo" style="background:#0f172a;border:1px solid #334155;"><img src="logos/miraj-logo.webp" alt="MIRAJ IT Consultancy Logo"></div>
             <h3 class="company-name">MIRAJ IT Consultancy</h3>
@@ -1507,12 +1513,6 @@
             <div class="company-logo">🤝</div>
             <h3 class="company-name">BenchXchange</h3>
             <p class="company-desc">India &bull; IT Bench Talent Marketplace &amp; Staffing Exchange</p>
-            <span class="company-btn">View Rankings &rarr;</span>
-          </div>
-          <div class="company-card" onclick="selectSeoCompany('exigo')">
-            <div class="company-logo" style="background:#fff;border:1px solid var(--border);"><img src="logos/Exigo.png" alt="Exigo Consulting Logo"></div>
-            <h3 class="company-name">Exigo Consulting</h3>
-            <p class="company-desc">India &bull; Business &amp; M&amp;A Advisory Services</p>
             <span class="company-btn">View Rankings &rarr;</span>
           </div>
         </div>
@@ -1528,6 +1528,16 @@
             <div class="sub-section-sub">Keyword rankings achieved for an on-demand IT services platform</div>
           </div>
           <div class="rank-grid" id="godGrid"></div>
+        </div>
+
+        <!-- Exigo Section -->
+        <div id="exigoRankingsSection" style="display: none;">
+          <button class="back-to-companies-btn" onclick="showSeoCompanySelect()">&larr; Back to Companies</button>
+          <div class="company-detail-header">
+            <h2 class="sub-section-title">Exigo Consulting &mdash; India</h2>
+            <div class="sub-section-sub">Keyword rankings achieved for M&amp;A and business advisory services</div>
+          </div>
+          <div class="rank-grid" id="exigoGrid"></div>
         </div>
 
         <!-- Miraj Section -->
@@ -1548,16 +1558,6 @@
             <div class="sub-section-sub">Keyword rankings achieved for a B2B talent marketplace &amp; staffing exchange</div>
           </div>
           <div class="rank-grid" id="benchXchangeGrid"></div>
-        </div>
-
-        <!-- Exigo Section -->
-        <div id="exigoRankingsSection" style="display: none;">
-          <button class="back-to-companies-btn" onclick="showSeoCompanySelect()">&larr; Back to Companies</button>
-          <div class="company-detail-header">
-            <h2 class="sub-section-title">Exigo Consulting &mdash; India</h2>
-            <div class="sub-section-sub">Keyword rankings achieved for M&amp;A and business advisory services</div>
-          </div>
-          <div class="rank-grid" id="exigoGrid"></div>
         </div>
       </div>
     </div>
@@ -1909,12 +1909,12 @@
 
     function buildSEO() {
       document.getElementById("godGrid").innerHTML = godData.map(function (d) { return '<div class="rank-card" onclick="openLb(this, event)"><img class="rank-img" src="' + d.img + '" alt="' + stripTags(d.keyword) + '" loading="lazy"><div class="rank-info"><div class="rank-keyword">' + d.keyword + '</div><span class="rank-pos ' + rankClass(d.rank) + '">' + rankLabel(d.rank) + '</span></div></div>'; }).join("");
-      document.getElementById("mirajGrid").innerHTML = mirajData.map(function (d) { return '<div class="rank-card" onclick="openLb(this, event)"><img class="rank-img" src="' + d.img + '" alt="' + stripTags(d.keyword) + '" loading="lazy"><div class="rank-info"><div class="rank-keyword">' + d.keyword + '</div><span class="rank-pos ' + rankClass(d.rank) + '">' + rankLabel(d.rank) + '</span></div></div>'; }).join("");
-      document.getElementById("benchXchangeGrid").innerHTML = benchXchangeData.map(function (d) { return '<div class="rank-card" onclick="openLb(this, event)"><img class="rank-img" src="' + d.img + '" alt="' + stripTags(d.keyword) + '" loading="lazy"><div class="rank-info"><div class="rank-keyword">' + d.keyword + '</div><span class="rank-pos ' + rankClass(d.rank) + '">' + rankLabel(d.rank) + '</span></div></div>'; }).join("");
       var exigoGridEl = document.getElementById("exigoGrid");
       if (exigoGridEl) {
         exigoGridEl.innerHTML = exigoSeoData.map(function (d) { return '<div class="rank-card" onclick="openLb(this, event)"><img class="rank-img" src="' + d.img + '" alt="' + stripTags(d.keyword) + '" loading="lazy"><div class="rank-info"><div class="rank-keyword">' + d.keyword + '</div><span class="rank-pos ' + rankClass(d.rank) + '">' + rankLabel(d.rank) + '</span></div></div>'; }).join("");
       }
+      document.getElementById("mirajGrid").innerHTML = mirajData.map(function (d) { return '<div class="rank-card" onclick="openLb(this, event)"><img class="rank-img" src="' + d.img + '" alt="' + stripTags(d.keyword) + '" loading="lazy"><div class="rank-info"><div class="rank-keyword">' + d.keyword + '</div><span class="rank-pos ' + rankClass(d.rank) + '">' + rankLabel(d.rank) + '</span></div></div>'; }).join("");
+      document.getElementById("benchXchangeGrid").innerHTML = benchXchangeData.map(function (d) { return '<div class="rank-card" onclick="openLb(this, event)"><img class="rank-img" src="' + d.img + '" alt="' + stripTags(d.keyword) + '" loading="lazy"><div class="rank-info"><div class="rank-keyword">' + d.keyword + '</div><span class="rank-pos ' + rankClass(d.rank) + '">' + rankLabel(d.rank) + '</span></div></div>'; }).join("");
     }
     function buildCreative() {
       var trinetraVideoEl = document.getElementById("trinetraVideoGrid");

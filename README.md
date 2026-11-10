@@ -37,8 +37,8 @@ Venkat/
 Verified Google Search keyword rankings organized by client:
 - **GOD (GeekOnDemand)**: IT support, hardware repair, router, and antivirus services.
 - **EXIGO**: M&A advisory, platform, earnout, and deal structuring services.
-- **BXC (BenchXchange)**: B2B bench talent marketplace and staffing exchange.
 - **MIRAJ**: UAE & Dubai digital consultancy keyword rankings.
+- **BXC (BenchXchange)**: B2B bench talent marketplace and staffing exchange.
 
 ### Content & Creative Designs
 Creative assets organized by client/project, including EXIGO, GeekOnDemand, and Trinetra.
